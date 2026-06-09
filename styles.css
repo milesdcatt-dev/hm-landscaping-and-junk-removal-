@@ -2581,3 +2581,135 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   .svc-photo { aspect-ratio: 16 / 11; }
 }
 
+/* ====================================================================
+   HERO COVER — full-bleed truck photo, dark scrim, white text on top
+   (replaces the cream split-layout hero)
+   ==================================================================== */
+.hero-cover {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 92vh;
+  padding: 132px 0 90px;
+  background: var(--green-900);
+}
+.hero-cover-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-cover-media img {
+  width: 100%;
+  height: 116%;            /* extra height so parallax shift never reveals an edge */
+  margin-top: -8%;
+  object-fit: cover;
+  object-position: 72% center;   /* keep the truck to the right, copy sits over the darker left */
+  display: block;
+}
+.hero-cover-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(96deg,
+      rgba(11,33,20,0.94) 0%,
+      rgba(11,33,20,0.86) 30%,
+      rgba(11,33,20,0.55) 56%,
+      rgba(11,33,20,0.18) 78%,
+      rgba(11,33,20,0.30) 100%),
+    linear-gradient(180deg, rgba(11,33,20,0.30), rgba(11,33,20,0.10) 40%, rgba(11,33,20,0.45));
+}
+.hero-cover-inner {
+  position: relative;
+  z-index: 2;
+}
+/* keep the copy in a left-aligned column, not full container width */
+.hero-cover .hero-title,
+.hero-cover .hero-sub,
+.hero-cover .hero-chips,
+.hero-cover .hero-cta,
+.hero-cover .trust-row-badges {
+  max-width: 640px;
+}
+
+/* eyebrow on dark */
+.hero-cover .hero-eyebrow {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+/* headline goes white, accent stays warm */
+.hero-cover .hero-title {
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 1.02;
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.28);
+  margin-bottom: 22px;
+}
+.hero-cover .hero-title .accent {
+  font-size: clamp(1.25rem, 2.4vw, 1.95rem);
+  line-height: 1.18;
+  color: var(--sage);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-top: 12px;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.34);
+}
+.hero-cover .hero-sub {
+  color: rgba(255,255,255,0.90);
+  max-width: 52ch;
+  margin-bottom: 26px;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.30);
+}
+
+/* chips slightly translucent-glass so they sit on the photo */
+.hero-cover .hero-chips { margin-bottom: 30px; }
+.hero-cover .hero-chips li {
+  background: rgba(255,255,255,0.92);
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* secondary call button reads as glass-on-photo */
+.btn-call {
+  background: rgba(255,255,255,0.95);
+  color: var(--green-900);
+  border: 1px solid rgba(255,255,255,0.6);
+}
+.btn-call:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+/* trust badges go light on the dark hero */
+.hero-cover .hero-cta { margin-bottom: 34px; }
+.hero-cover .trust-row-badges li { color: rgba(255,255,255,0.92); }
+.hero-cover .trust-ico {
+  background: rgba(255,255,255,0.16);
+  color: #fff;
+}
+
+/* scroll cue light */
+.hero-cover .scroll-cue { color: rgba(255,255,255,0.8); }
+
+@media (max-width: 860px) {
+  .hero-cover {
+    min-height: 0;
+    padding: 116px 0 64px;
+  }
+  .hero-cover-media img { object-position: 64% center; }
+  .hero-cover-scrim {
+    background:
+      linear-gradient(180deg,
+        rgba(11,33,20,0.78) 0%,
+        rgba(11,33,20,0.70) 45%,
+        rgba(11,33,20,0.84) 100%);
+  }
+}
+@media (max-width: 620px) {
+  .hero-cover .hero-title { font-size: 2.35rem; line-height: 1.06; }
+  .hero-cover .hero-cta .btn { width: 100%; }
+}
+
