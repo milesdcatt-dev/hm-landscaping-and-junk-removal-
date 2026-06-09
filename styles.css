@@ -2601,27 +2601,30 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 }
 .hero-cover-media img {
   width: 100%;
-  height: 116%;            /* extra height so parallax shift never reveals an edge */
-  margin-top: -8%;
+  height: 112%;            /* extra height so parallax shift never reveals an edge */
+  margin-top: -6%;
   object-fit: cover;
-  object-position: 72% center;   /* keep the truck to the right, copy sits over the darker left */
+  object-position: center 30%;   /* frame the crew in front of the truck */
   display: block;
 }
 .hero-cover-scrim {
   position: absolute;
   inset: 0;
+  /* moody, slightly heavier treatment: keeps copy readable, plays down photo detail,
+     while the crew on the right still reads through */
   background:
-    linear-gradient(96deg,
-      rgba(11,33,20,0.94) 0%,
-      rgba(11,33,20,0.86) 30%,
-      rgba(11,33,20,0.55) 56%,
-      rgba(11,33,20,0.18) 78%,
-      rgba(11,33,20,0.30) 100%),
-    linear-gradient(180deg, rgba(11,33,20,0.30), rgba(11,33,20,0.10) 40%, rgba(11,33,20,0.45));
+    linear-gradient(94deg,
+      rgba(9,28,17,0.90) 0%,
+      rgba(9,28,17,0.78) 34%,
+      rgba(9,28,17,0.52) 58%,
+      rgba(9,28,17,0.40) 100%),
+    linear-gradient(180deg, rgba(9,28,17,0.34) 0%, rgba(9,28,17,0.12) 38%, rgba(9,28,17,0.55) 100%),
+    radial-gradient(120% 90% at 30% 40%, transparent 40%, rgba(9,28,17,0.28) 100%);
 }
 .hero-cover-inner {
   position: relative;
   z-index: 2;
+  padding-left: clamp(0px, 2.4vw, 44px);   /* nudge the copy in off the edge */
 }
 /* keep the copy in a left-aligned column, not full container width */
 .hero-cover .hero-title,
@@ -2670,6 +2673,12 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 .hero-cover .hero-chips li {
   background: rgba(255,255,255,0.92);
   border-color: rgba(255,255,255,0.4);
+}
+/* keep the "+ more" chip solid green with visible cream text (it inherited the white pill above) */
+.hero-cover .hero-chips .hero-chip-more {
+  background: var(--green-700);
+  color: var(--bg-cream);
+  border-color: transparent;
 }
 
 /* secondary call button reads as glass-on-photo */
