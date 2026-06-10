@@ -2610,21 +2610,27 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 .hero-cover-scrim {
   position: absolute;
   inset: 0;
-  /* moody, slightly heavier treatment: keeps copy readable, plays down photo detail,
-     while the crew on the right still reads through */
+  /* neutral dark wash (less green) + gentle top/bottom fade; the copy panel below
+     carries text contrast so this can stay light enough to show the crew */
   background:
-    linear-gradient(94deg,
-      rgba(9,28,17,0.90) 0%,
-      rgba(9,28,17,0.78) 34%,
-      rgba(9,28,17,0.52) 58%,
-      rgba(9,28,17,0.40) 100%),
-    linear-gradient(180deg, rgba(9,28,17,0.34) 0%, rgba(9,28,17,0.12) 38%, rgba(9,28,17,0.55) 100%),
-    radial-gradient(120% 90% at 30% 40%, transparent 40%, rgba(9,28,17,0.28) 100%);
+    linear-gradient(180deg, rgba(14,17,15,0.42) 0%, rgba(14,17,15,0.16) 38%, rgba(12,15,13,0.58) 100%),
+    radial-gradient(130% 100% at 32% 46%, transparent 52%, rgba(12,15,13,0.30) 100%);
 }
 .hero-cover-inner {
   position: relative;
   z-index: 2;
-  padding-left: clamp(0px, 2.4vw, 44px);   /* nudge the copy in off the edge */
+}
+
+/* structured glass panel behind the hero copy */
+.hero-panel {
+  max-width: 620px;
+  padding: clamp(26px, 3vw, 40px) clamp(24px, 3vw, 40px) clamp(28px, 3vw, 38px);
+  background: rgba(10,16,13,0.52);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 26px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.34);
 }
 /* keep the copy in a left-aligned column, not full container width */
 .hero-cover .hero-title,
