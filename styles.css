@@ -2687,9 +2687,11 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   margin: 10px auto 18px;              /* centered logo header above the photo */
   object-fit: contain;
   background: #fff;                    /* white pill bubble around the logo */
-  border: 4px solid var(--green-900);  /* bold dark green outline around the pill */
+  border: 4px solid var(--green-700);  /* lighter green outline around the pill */
   border-radius: 999px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.16);
+  box-shadow:
+    0 0 28px 6px rgba(255,255,255,0.45),  /* dim light glow all the way around */
+    0 8px 22px rgba(0,0,0,0.16);
 }
 .hero-frame .hero-frame-img {
   position: relative;
