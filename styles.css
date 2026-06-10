@@ -2928,3 +2928,20 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   .hero-cover .hero-cta .btn { width: 100%; }
 }
 
+/* ============================================================
+   Accessibility: visible keyboard focus (WCAG 2.4.7)
+   Only shows for keyboard nav (:focus-visible), not mouse clicks.
+   ============================================================ */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 6px rgba(244,122,32,0.25);
+}
+
