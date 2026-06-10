@@ -2616,6 +2616,40 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 .svc-card h3 { margin-bottom: 8px; }
 .svc-card p { margin-bottom: 18px; }
 
+/* ----- Make the service grid POP: always-on colored borders ----- */
+.svc-card {
+  border: 2px solid rgba(31,77,51,0.30);   /* visible forest-green border */
+  border-radius: 18px;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s ease;
+}
+/* Always-visible colored top bar (was hover-only). Sits above the photo. */
+.svc-card::after {
+  inset: 0 0 auto 0;        /* move strip to the TOP */
+  height: 5px;
+  transform: none;          /* always shown, no slide-in */
+  background: linear-gradient(90deg, var(--green-700), var(--orange));
+  z-index: 3;
+}
+.svc-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange);   /* border lights up orange on hover */
+  box-shadow: 0 18px 38px rgba(13,40,24,0.18);
+}
+.svc-card:hover::after { transform: none; }  /* keep it; don't re-trigger slide */
+/* Title gets a small orange accent so the eye lands on it */
+.svc-card h3 {
+  position: relative;
+  padding-left: 14px;
+}
+.svc-card h3::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.18em; bottom: 0.18em;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--orange);
+}
+
 /* ----- Responsive: keep hero readable, no horizontal spill ----- */
 @media (max-width: 620px) {
   .hero-chips { gap: 8px; }
