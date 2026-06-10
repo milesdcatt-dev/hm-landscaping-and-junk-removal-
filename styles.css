@@ -2637,7 +2637,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   position: relative;
   z-index: 3;
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
   justify-self: start;
   align-self: center;
   padding: clamp(22px, 2.2vw, 32px) clamp(20px, 2.2vw, 30px) clamp(24px, 2.2vw, 32px);
@@ -2653,7 +2653,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
    with a real matted-frame feel (cream mat + dark border + deep shadow) */
 .hero-frame {
   position: relative;
-  width: 80%;                /* fills ~80% of the hero, pushed to the right */
+  width: 60%;                /* pushed to the right, with a clear gap left of the panel */
   margin: 0 0 0 auto;
   padding: clamp(12px, 1vw, 18px);     /* the "mat" around the photo */
   background: var(--bg-cream);
