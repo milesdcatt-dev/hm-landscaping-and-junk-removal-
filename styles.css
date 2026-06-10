@@ -2618,35 +2618,43 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
     linear-gradient(180deg, rgba(12,15,13,0.38) 0%, rgba(12,15,13,0.22) 42%, rgba(12,15,13,0.52) 100%),
     radial-gradient(140% 110% at 30% 46%, rgba(12,15,13,0.06) 34%, rgba(12,15,13,0.34) 100%);
 }
+/* stack the big photo and the copy panel in one grid cell so the hero
+   grows to fit whichever is taller, and the panel overlaps the photo's left edge */
 .hero-cover-inner {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.25fr);
+  grid-template-columns: 1fr;
   align-items: center;
-  gap: clamp(24px, 3vw, 48px);
+}
+.hero-cover-inner > .hero-panel,
+.hero-cover-inner > .hero-frame {
+  grid-area: 1 / 1;
 }
 
-/* structured glass panel behind the hero copy */
+/* glass copy panel floats over the left edge of the big photo */
 .hero-panel {
-  max-width: 520px;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 440px;
+  justify-self: start;
+  align-self: center;
   padding: clamp(22px, 2.2vw, 32px) clamp(20px, 2.2vw, 30px) clamp(24px, 2.2vw, 32px);
-  background: rgba(10,16,13,0.42);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(10,16,13,0.52);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 22px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.36);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.44);
 }
 
 /* sharp, fully-framed crew photo on the right — whole crew visible, no crop,
    with a real matted-frame feel (cream mat + dark border + deep shadow) */
 .hero-frame {
   position: relative;
-  margin: 0;
-  max-width: 620px;          /* comfortable framed size, not stretched to the column */
-  justify-self: center;
-  width: 100%;
+  width: 80%;                /* fills ~80% of the hero, pushed to the right */
+  margin: 0 0 0 auto;
   padding: clamp(12px, 1vw, 18px);     /* the "mat" around the photo */
   background: var(--bg-cream);
   border-radius: 18px;
