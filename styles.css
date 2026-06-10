@@ -2680,10 +2680,15 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 }
 .hero-frame .hero-frame-logo {
   display: block;
+  box-sizing: border-box;
   width: auto;
-  height: clamp(42px, 4vw, 62px);
-  margin: 6px auto 16px;     /* centered logo header in the cream mat, above the photo */
+  height: clamp(78px, 6.5vw, 104px);   /* bigger logo */
+  padding: 14px 34px;                  /* breathing room inside the pill */
+  margin: 10px auto 18px;              /* centered logo header above the photo */
   object-fit: contain;
+  background: #fff;                    /* white pill bubble around the logo */
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.06);
 }
 .hero-frame .hero-frame-img {
   position: relative;
