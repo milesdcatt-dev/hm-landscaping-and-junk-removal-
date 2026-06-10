@@ -2604,7 +2604,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   height: 112%;            /* extra height so parallax shift never reveals an edge */
   margin-top: -6%;
   object-fit: cover;
-  object-position: 62% 26%;   /* show all three to the right; panel sits over the open left/foreground */
+  object-position: 40% 26%;   /* anchor left so the crew shifts toward the right, clear of the panel */
   display: block;
 }
 .hero-cover-scrim {
@@ -2625,6 +2625,8 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
    so the crew stays visible to the right of it */
 .hero-panel {
   max-width: 460px;
+  margin-left: clamp(-32px, -2vw, -12px);   /* nudge left toward the edge */
+  margin-top: clamp(-40px, -3vw, -16px);    /* nudge up */
   padding: clamp(22px, 2.2vw, 30px) clamp(20px, 2.2vw, 28px) clamp(24px, 2.2vw, 30px);
   background: rgba(10,16,13,0.46);
   backdrop-filter: blur(14px);
