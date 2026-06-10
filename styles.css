@@ -2222,6 +2222,34 @@ body { background: var(--bg-cream); color: var(--ink); }
   color: #fff;
 }
 
+/* ----- Real before/after cards (full-width, natural ratio so both halves show) ----- */
+.work-grid-v3 .work-card-ba { grid-column: 1 / -1; }
+.work-card-ba .ba-img { width: 100%; line-height: 0; }
+.work-card-ba .ba-img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;       /* override the 4/3 crop used by other work-card images */
+  object-fit: contain;
+  display: block;
+}
+/* subtle center seam to read as a true before | after split */
+.work-card-ba .ba-img {
+  position: relative;
+  background: var(--green-900);
+}
+.work-card-ba .ba-img::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(245,241,230,0.55);
+  pointer-events: none;
+}
+@media (max-width: 620px) {
+  .work-card-ba .ba-img::after { display: none; }
+}
+
 /* ----- Trust bar under hero ----- */
 .trust-bar {
   background: var(--green-900);
