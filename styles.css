@@ -2653,8 +2653,8 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
    with a real matted-frame feel (cream mat + dark border + deep shadow) */
 .hero-frame {
   position: relative;
-  width: 60%;                /* pushed to the right, with a clear gap left of the panel */
-  margin: 0 0 0 auto;
+  width: 49.5%;              /* centered in the space right of the panel, ~1in each side */
+  margin: 0 0 0 44.5%;
   padding: clamp(12px, 1vw, 18px);     /* the "mat" around the photo */
   background: var(--bg-cream);
   border-radius: 18px;
