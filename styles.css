@@ -2226,19 +2226,20 @@ body { background: var(--bg-cream); color: var(--ink); }
   color: #fff;
 }
 
-/* ----- Real before/after cards (full-width, natural ratio so both halves show) ----- */
-.work-grid-v3 .work-card-ba { grid-column: 1 / -1; }
+/* ----- Real before/after cards: one tidy row of three (compressed) ----- */
+.work-grid-v3 .work-card-ba { grid-column: span 1; }
 .work-card-ba .ba-img { width: 100%; line-height: 0; }
 .work-card-ba .ba-img img {
   width: 100%;
-  height: auto;
-  aspect-ratio: auto;       /* override the 4/3 crop used by other work-card images */
-  object-fit: contain;
+  height: 100%;
+  aspect-ratio: 16 / 10;    /* uniform crop so all three align in the row */
+  object-fit: cover;
   display: block;
 }
 /* subtle center seam to read as a true before | after split */
 .work-card-ba .ba-img {
   position: relative;
+  aspect-ratio: 16 / 10;
   background: var(--green-900);
 }
 .work-card-ba .ba-img::after {
