@@ -2656,9 +2656,9 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   position: relative;
   align-self: stretch;       /* fill the hero height so the photo runs tall */
   display: flex;
-  /* fill from (panel + 1.5in) to (right wall - 0.75in); 483 panel + 144 + 72 = 699 */
+  /* fill from (panel + ~1.9in) to (right wall - ~0.35in); shifted right */
   width: calc(100% - 699px);
-  margin: -12px 0 30px 627px; /* 1.25in from hero top/bottom (hero pads 132/90 -> 0.75in taller each side); 1.5in left of the 483px panel */
+  margin: -12px 0 30px 665px; /* 1.25in from hero top/bottom (hero pads 132/90); shifted right toward the wall */
   padding: clamp(12px, 1vw, 18px);     /* the "mat" around the photo */
   background: var(--bg-cream);
   border-radius: 18px;
