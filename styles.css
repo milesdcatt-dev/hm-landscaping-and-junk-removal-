@@ -2656,6 +2656,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   position: relative;
   align-self: center;        /* center the photo vertically in the hero */
   display: flex;
+  flex-direction: column;    /* logo header stacked above the photo */
   /* wide toward the right wall; photo keeps its natural shape so the whole crew shows */
   width: calc(100% - 583px);
   margin: 0 0 0 601px;       /* moved over: bigger left gap, right edge near the wall */
@@ -2676,6 +2677,13 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   box-shadow: inset 0 0 0 1px rgba(0,0,0,0.16);
   pointer-events: none;
   z-index: 2;
+}
+.hero-frame .hero-frame-logo {
+  display: block;
+  width: auto;
+  height: clamp(42px, 4vw, 62px);
+  margin: 6px auto 16px;     /* centered logo header in the cream mat, above the photo */
+  object-fit: contain;
 }
 .hero-frame .hero-frame-img {
   position: relative;
