@@ -2623,6 +2623,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 .hero-cover-inner {
   position: relative;
   z-index: 2;
+  max-width: 1680px;        /* hero spans wider than the rest of the site */
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -2655,8 +2656,9 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   position: relative;
   align-self: stretch;       /* fill the hero height so the photo runs tall */
   display: flex;
-  width: 42.6%;              /* ~1in gap from panel (left) and ~1in from right wall */
-  margin: 60px 0 102px 49.2%; /* 2in from hero top/bottom (hero pads 132/90); ~1in left of panel */
+  /* fill from (panel + 1in) to (right wall - 1in); 483 panel + 96 + 96 = 675 */
+  width: calc(100% - 675px);
+  margin: 60px 0 102px 579px; /* 2in from hero top/bottom (hero pads 132/90); 1in left of the 483px panel */
   padding: clamp(12px, 1vw, 18px);     /* the "mat" around the photo */
   background: var(--bg-cream);
   border-radius: 18px;
