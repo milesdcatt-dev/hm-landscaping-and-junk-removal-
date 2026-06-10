@@ -2644,7 +2644,10 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 .hero-frame {
   position: relative;
   margin: 0;
-  padding: clamp(10px, 0.9vw, 16px);     /* the "mat" around the photo */
+  max-width: 620px;          /* comfortable framed size, not stretched to the column */
+  justify-self: center;
+  width: 100%;
+  padding: clamp(12px, 1vw, 18px);     /* the "mat" around the photo */
   background: var(--bg-cream);
   border-radius: 18px;
   box-shadow:
