@@ -2470,6 +2470,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 }
 .about-crew img {
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
