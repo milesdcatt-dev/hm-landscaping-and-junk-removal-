@@ -599,11 +599,15 @@ p { margin: 0 0 1em; color: var(--slate-700); }
 
 /* ============ MARQUEE ============ */
 .marquee {
-  background: var(--ink);
+  /* Same dark-green family as the trust bar above, with a subtle gradient
+     so the two strips read as one cohesive band instead of a hard clash. */
+  background: linear-gradient(180deg, var(--green-900) 0%, #081c11 100%);
   color: #fff;
-  padding: 22px 0;
+  padding: 20px 0;
   overflow: hidden;
-  border-block: 1px solid rgba(255,255,255,0.06);
+  /* Faint orange hairline seam echoes the trust bar's orange top accent */
+  border-top: 1px solid rgba(244,122,32,0.22);
+  border-bottom: 1px solid rgba(0,0,0,0.25);
 }
 .marquee-track {
   display: flex;
