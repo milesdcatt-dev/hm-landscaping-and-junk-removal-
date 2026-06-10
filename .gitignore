@@ -1,8 +1,12 @@
 # Brand/improvement source packs — not served at runtime
 _source_assets/
 
+# Local timestamped backups — not served at runtime
+_backups/
+
 # Editor / preview config
 .claude/
+.preview-server.*.log
 
 # OS junk
 Thumbs.db
