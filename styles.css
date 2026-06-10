@@ -2713,6 +2713,23 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   max-width: 640px;
 }
 
+/* desktop: a taller copy panel with everything centered inside */
+@media (min-width: 901px) {
+  .hero-cover .hero-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 1100px;
+  }
+  .hero-cover .hero-panel .hero-chips,
+  .hero-cover .hero-panel .hero-cta,
+  .hero-cover .hero-panel .trust-row-badges {
+    justify-content: center;
+  }
+}
+
 /* eyebrow on dark */
 .hero-cover .hero-eyebrow {
   background: rgba(255,255,255,0.12);
