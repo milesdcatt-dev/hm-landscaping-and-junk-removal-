@@ -2604,7 +2604,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   height: 112%;            /* extra height so parallax shift never reveals an edge */
   margin-top: -6%;
   object-fit: cover;
-  object-position: center 30%;   /* frame the crew in front of the truck */
+  object-position: 62% 26%;   /* show all three to the right; panel sits over the open left/foreground */
   display: block;
 }
 .hero-cover-scrim {
@@ -2621,17 +2621,21 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   z-index: 2;
 }
 
-/* structured glass panel behind the hero copy */
+/* structured glass panel behind the hero copy — kept narrow and left-pinned
+   so the crew stays visible to the right of it */
 .hero-panel {
-  max-width: 620px;
-  padding: clamp(26px, 3vw, 40px) clamp(24px, 3vw, 40px) clamp(28px, 3vw, 38px);
-  background: rgba(10,16,13,0.52);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 26px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.34);
+  max-width: 460px;
+  padding: clamp(22px, 2.2vw, 30px) clamp(20px, 2.2vw, 28px) clamp(24px, 2.2vw, 30px);
+  background: rgba(10,16,13,0.46);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.36);
 }
+.hero-cover .hero-title { font-size: clamp(2.4rem, 4.6vw, 3.6rem); }
+.hero-cover .hero-title .accent { font-size: clamp(1.15rem, 2vw, 1.6rem); }
+.hero-cover .hero-sub { font-size: 1.02rem; margin-bottom: 22px; }
 /* keep the copy in a left-aligned column, not full container width */
 .hero-cover .hero-title,
 .hero-cover .hero-sub,
