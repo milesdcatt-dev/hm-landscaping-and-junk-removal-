@@ -2744,7 +2744,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   font-size: clamp(2.6rem, 6vw, 4.6rem);
   line-height: 1.02;
   color: #fff;
-  -webkit-text-stroke: 4px var(--green-900);  /* dark green outline around the white letters */
+  -webkit-text-stroke: 8px var(--green-900);  /* dark green outline around the white letters */
   paint-order: stroke fill;                   /* stroke behind, white fill on top stays bold */
   text-shadow:
     0 0 1px var(--green-900),
