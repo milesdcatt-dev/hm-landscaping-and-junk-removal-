@@ -2657,8 +2657,8 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   align-self: center;        /* center the photo vertically in the hero */
   display: flex;
   /* wide toward the right wall; photo keeps its natural shape so the whole crew shows */
-  width: calc(100% - 525px);
-  margin: 0 0 0 543px;       /* ~0.6in left of panel, right edge near the wall */
+  width: calc(100% - 561px);
+  margin: 0 0 0 579px;       /* ~1in left of panel, right edge near the wall */
   padding: clamp(12px, 1vw, 18px);     /* the "mat" around the photo */
   background: var(--bg-cream);
   border-radius: 18px;
