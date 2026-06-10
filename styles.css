@@ -2607,24 +2607,24 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   object-position: center 30%;
   display: block;
   /* this copy is now a soft, atmospheric backdrop — the sharp version sits in the frame */
-  filter: blur(16px) brightness(0.62) saturate(1.05);
+  filter: blur(11px) brightness(0.78) saturate(1.1);
   transform: scale(1.04);
 }
 .hero-cover-scrim {
   position: absolute;
   inset: 0;
-  /* darker wash now that the background is decorative; keeps copy + frame popping */
+  /* lighter wash so more of the scene shows through; copy panel carries its own contrast */
   background:
-    linear-gradient(180deg, rgba(12,15,13,0.55) 0%, rgba(12,15,13,0.40) 40%, rgba(12,15,13,0.70) 100%),
-    radial-gradient(140% 110% at 30% 46%, rgba(12,15,13,0.10) 30%, rgba(12,15,13,0.50) 100%);
+    linear-gradient(180deg, rgba(12,15,13,0.38) 0%, rgba(12,15,13,0.22) 42%, rgba(12,15,13,0.52) 100%),
+    radial-gradient(140% 110% at 30% 46%, rgba(12,15,13,0.06) 34%, rgba(12,15,13,0.34) 100%);
 }
 .hero-cover-inner {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.25fr);
   align-items: center;
-  gap: clamp(28px, 4vw, 64px);
+  gap: clamp(24px, 3vw, 48px);
 }
 
 /* structured glass panel behind the hero copy */
@@ -2639,14 +2639,33 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   box-shadow: 0 24px 60px rgba(0,0,0,0.36);
 }
 
-/* sharp, fully-framed crew photo on the right — whole crew visible, no crop */
+/* sharp, fully-framed crew photo on the right — whole crew visible, no crop,
+   with a real matted-frame feel (cream mat + dark border + deep shadow) */
 .hero-frame {
   position: relative;
   margin: 0;
-  border-radius: 24px;
+  padding: clamp(10px, 0.9vw, 16px);     /* the "mat" around the photo */
+  background: var(--bg-cream);
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.12),
+    0 40px 90px rgba(0,0,0,0.52),
+    0 8px 24px rgba(0,0,0,0.34);
+}
+.hero-frame::after {
+  /* thin inner keyline so the photo edge reads crisp against the mat */
+  content: '';
+  position: absolute;
+  inset: clamp(10px, 0.9vw, 16px);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.16);
+  pointer-events: none;
+  z-index: 2;
+}
+.hero-frame .hero-frame-img {
+  position: relative;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.16);
-  box-shadow: 0 30px 70px rgba(0,0,0,0.46);
   aspect-ratio: 4 / 3;
 }
 .hero-frame img {
@@ -2658,11 +2677,12 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
 .hero-frame figcaption {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  padding: 28px 18px 14px;
-  font-size: 0.82rem;
+  padding: 30px 16px 12px;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(180deg, transparent, rgba(8,12,9,0.72));
+  background: linear-gradient(180deg, transparent, rgba(8,12,9,0.74));
+  z-index: 1;
 }
 .hero-cover .hero-title { font-size: clamp(2.4rem, 4.6vw, 3.6rem); }
 .hero-cover .hero-title .accent { font-size: clamp(1.15rem, 2vw, 1.6rem); }
