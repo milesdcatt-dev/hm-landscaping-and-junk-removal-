@@ -1,0 +1,256 @@
+/* =====================================================================
+   H&M JUNK REMOVAL & LANDSCAPING — BRANDED LOADING SCREEN
+   ---------------------------------------------------------------------
+   Visual hierarchy (front -> back):
+     7  spark pop            (inside mower group)
+     6  smoke puffs          (inside mower group)
+     5  mower character      (.hm-mower-group)
+     4  grass strip          (overlaps bottom-front edge of the logo pill)
+     2  logo pill  +  loading bar
+     0  background trees / branch / pine grove
+        paper texture        (overlay ::before, very subtle)
+
+   The HM logo IS the pill — there is NO extra pill/badge/outline around it.
+   Animation is JS-driven (Web Animations API) so it plays smoothly and is
+   not clobbered by any global prefers-reduced-motion CSS overrides; the
+   reduced-motion experience is handled explicitly in loader.js.
+   ===================================================================== */
+
+#hm-loader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #F6F0E4;                 /* warm cream */
+  z-index: 99999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  /* fonts/colors are self-contained so the loader works even before site CSS */
+  -webkit-font-smoothing: antialiased;
+}
+#hm-loader[hidden] { display: none; }
+
+/* subtle paper / plaster texture, very soft */
+#hm-loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("assets/loader/16_subtle_paper_texture.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+/* faint warm vignette to seat the composition */
+#hm-loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 42%,
+              rgba(255,255,255,0) 55%, rgba(47,107,70,0.06) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------------- main stage ---------------- */
+.hm-stage {
+  position: relative;
+  width: min(920px, 92vw);
+  height: 360px;
+  z-index: 1;
+}
+@media (max-width: 640px) {
+  .hm-stage { height: 300px; }
+}
+
+/* ---------------- background decoration (very subtle) ---------------- */
+.hm-bg { position: absolute; z-index: 0; pointer-events: none; user-select: none; }
+
+.hm-bg-branch {                      /* 14_leafy_branch_line_art */
+  left: 4%; top: 7%;
+  width: clamp(120px, 16vw, 210px);
+  opacity: 0.07;
+  transform: rotate(-8deg);
+}
+.hm-bg-pines {                       /* 11_tree_pine_grove_line_art */
+  left: 50%; bottom: 8%;
+  transform: translateX(-50%);
+  width: clamp(440px, 62vw, 760px);
+  opacity: 0.06;
+}
+.hm-bg-bonsai {                      /* 12_tree_bonsai_line_art */
+  right: 3%; top: 10%;
+  width: clamp(140px, 18vw, 240px);
+  opacity: 0.07;
+}
+.hm-bg-water {                       /* 13_tree_watercolor (optional, faint) */
+  left: 1%; bottom: 4%;
+  width: clamp(150px, 20vw, 250px);
+  opacity: 0.05;
+}
+
+/* ---------------- logo pill (the brand IS the pill) ---------------- */
+.hm-logo {
+  position: absolute;
+  left: 50%; top: 58%;
+  transform: translate(-50%, -50%);
+  width: clamp(520px, 68vw, 940px);  /* bigger brand pill = the ground/platform, matches grass width */
+  height: auto;
+  z-index: 2;
+  opacity: 0;                        /* faded in by JS */
+  will-change: transform, opacity;
+  user-select: none;
+}
+
+/* ---------------- dirt strip (under the grass, on the pill's top curve) ---- */
+.hm-dirt {
+  position: absolute;
+  left: 50%; top: 17%;               /* soil band sits below the grass blades, on the pill's top edge */
+  transform: translateX(-50%);
+  width: clamp(196px, 40.5vw, 582px);  /* NARROWER than the grass so blades hide its ends (no clip-out at the sides) */
+  height: clamp(18px, 2.2vw, 30px);  /* thin — not too thick */
+  object-fit: cover;
+  object-position: top center;       /* keep the wavy topsoil edge, crop the deep soil */
+  border-radius: 999px;              /* fully rounded ends so the sides taper, never a hard edge */
+  z-index: 3;                        /* between pill (2) and grass (4) */
+  opacity: 0;                        /* revealed with the grass by JS */
+  will-change: transform, opacity;
+  user-select: none;
+}
+
+/* ---------------- grass strip ---------------- */
+.hm-grass {
+  position: absolute;
+  left: 50%; top: -3%;               /* short grass rooted right at the logo's top edge */
+  transform: translateX(-50%);
+  width: clamp(200px, 42vw, 600px);  /* fits within the pill's FLAT top zone so corners don't droop past the rounded ends */
+  height: clamp(58px, 6.8vw, 96px);  /* SHORT — blades only to the man's knee */
+  object-fit: fill;
+  z-index: 4;
+  opacity: 0;                        /* slid + faded in by JS */
+  will-change: transform, opacity;
+  user-select: none;
+}
+
+/* ---------------- mower group (character + spark + smoke) ---------- */
+.hm-mower-group {
+  position: absolute;
+  left: 25%; top: -5%;               /* stands ON TOP of the logo, feet in the short grass */
+  transform: translate(-50%, -50%);
+  width: clamp(180px, 24vw, 290px);
+  z-index: 5;
+  opacity: 0;                        /* entrance handled by JS */
+  will-change: transform, opacity;
+}
+.hm-mower-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+/* spark sits over the engine/pull area (anchored to the mower group) */
+.hm-spark {
+  position: absolute;
+  left: 70%; top: 34%;
+  width: 26%;                        /* scales with the mower */
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0;
+  z-index: 7;
+  pointer-events: none;
+}
+
+/* smoke puffs originate just above/behind the engine */
+.hm-smoke {
+  position: absolute;
+  left: 78%; top: 18%;
+  width: 46%;                        /* scales with the mower */
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ---------------- heat-up loading bar (green -> fire) ---------------- */
+.hm-bar {
+  position: absolute;
+  left: 50%; top: 104%;              /* below the whole (taller) pill */
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 8;
+  --heat: 0;                         /* 0 cold -> 1 fire, driven by loader.js */
+}
+
+/* the track */
+.hm-progress {
+  position: relative;
+  width: var(--track-w, clamp(260px, 36vw, 380px));
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(32, 72, 48, 0.32);   /* clearly visible groove on cream */
+  border: 1px solid rgba(32, 72, 48, 0.28);
+  box-shadow: inset 0 2px 3px rgba(13, 40, 24, 0.22);
+}
+
+/* the fill — width set by JS; a FIXED-WIDTH cold->hot gradient is revealed
+   left-to-right, so the leading edge gets hotter the further it ramps */
+.hm-progress-fill {
+  position: relative;
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background-image: linear-gradient(90deg,
+      #2F6B46 0%,      /* cool brand green */
+      #6FAE3A 24%,     /* lime */
+      #F5C13A 52%,     /* amber */
+      #F47A20 76%,     /* orange (brand) */
+      #E23410 100%);   /* fire red */
+  background-repeat: no-repeat;
+  background-size: var(--track-w, clamp(260px, 36vw, 380px)) 100%;
+  background-position: left center;
+  /* glow intensifies as it heats up */
+  box-shadow:
+    0 0 calc(4px + var(--heat) * 20px) calc(var(--heat) * 2px) rgba(244, 90, 12, calc(var(--heat) * 0.85)),
+    inset 0 0 calc(var(--heat) * 10px) rgba(255, 220, 120, calc(var(--heat) * 0.6));
+}
+
+/* tiny flame flicker on the leading edge once it's hot */
+.hm-progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;                         /* rides the fill's leading (right) edge */
+  width: 14px;
+  height: 26px;
+  transform: translate(-50%, -50%) scaleY(var(--heat));
+  background: radial-gradient(closest-side,
+      rgba(255, 236, 160, 0.95), rgba(255, 150, 40, 0.7) 55%, rgba(226, 52, 16, 0) 100%);
+  opacity: var(--heat);
+  pointer-events: none;
+}
+
+/* the live percentage */
+.hm-pct {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(0.95rem, 0.85rem + 0.4vw, 1.15rem);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  /* text color warms from green to fire as it heats */
+  color: color-mix(in srgb, #E23410 calc(var(--heat) * 100%), #2F6B46);
+  text-shadow: 0 0 calc(var(--heat) * 10px) rgba(244, 90, 12, calc(var(--heat) * 0.55));
+}
+
+@media (max-width: 640px) {
+  .hm-progress { height: 13px; }
+}
+
+/* graceful no-JS / fallback: don't trap the page if the script never runs */
+.hm-no-js #hm-loader { display: none; }

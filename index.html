@@ -51,45 +51,6 @@
   }
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I get a quote?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Text photos of the junk, yard, or project area to 202-999-7885. We send back a real, written quote, usually within the hour." }
-      },
-      {
-        "@type": "Question",
-        "name": "What areas do you serve?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Northern Virginia, generally within about 40 minutes of our base. That includes Herndon, Reston, Vienna, Oakton, Oak Hill, Fairfax, Chantilly, Centreville, Great Falls, McLean, Sterling, Ashburn, and surrounding neighborhoods." }
-      },
-      {
-        "@type": "Question",
-        "name": "How fast can you come out?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Same-day or next-day is often possible depending on the schedule. Text us and we'll let you know the soonest we can get there." }
-      },
-      {
-        "@type": "Question",
-        "name": "How is pricing decided?",
-        "acceptedAnswer": { "@type": "Answer", "text": "By the job, not by the hour. Price depends on load size, weight, stairs, distance, dump fees, and how much cleanup is needed. You see the number before we start." }
-      },
-      {
-        "@type": "Question",
-        "name": "What can't you take?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We handle most household and yard items. For hazardous materials or anything unusual, text a photo first and we'll let you know whether we can haul it." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is there a minimum job size?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No job is too small. Whether it's one mattress or a full garage, send a photo and we'll quote it fairly." }
-      }
-    ]
-  }
-  </script>
-
   <!-- Fonts: Manrope (display), Inter (body), Bebas Neue (numbers/badges) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -99,7 +60,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260612-hiw-depth1" />
+  <link rel="stylesheet" href="loader.css" />
 
   <!-- No-JS fallback: reveal animated content and drop the intro curtain -->
   <noscript>
@@ -110,6 +72,51 @@
   </noscript>
 </head>
 <body>
+
+  <!-- ====================== BRANDED LOADING SCREEN ======================
+       The HM logo itself is the pill (01_hm_logo_pill.png) — no extra pill is
+       drawn around it. Grass sits OUTSIDE and overlaps the lower-front edge of
+       the pill; the mower stands on the grass at the left, always facing right.
+       Markup is inline so the cream overlay paints instantly (no flash); the
+       animation is sequenced by loader.js. Asset paths are echoed below and in
+       the CONFIG block at the top of loader.js.
+       =================================================================== -->
+  <div id="hm-loader" role="status" aria-label="Loading H&amp;M Junk Removal &amp; Landscaping">
+    <div class="hm-stage">
+      <!-- background decoration (very subtle) -->
+      <img class="hm-bg hm-bg-branch" src="assets/loader/14_leafy_branch_line_art.png" alt="" aria-hidden="true" />
+      <img class="hm-bg hm-bg-pines"  src="assets/loader/11_tree_pine_grove_line_art.png" alt="" aria-hidden="true" />
+      <img class="hm-bg hm-bg-bonsai" src="assets/loader/12_tree_bonsai_line_art.png" alt="" aria-hidden="true" />
+      <img class="hm-bg hm-bg-water"  src="assets/loader/13_tree_watercolor.png" alt="" aria-hidden="true" />
+
+      <!-- logo pill (the brand IS the pill) -->
+      <img class="hm-logo" src="assets/loader/01_hm_logo_pill.png" alt="H&amp;M Junk Removal &amp; Landscaping" />
+
+      <!-- dirt strip — sits UNDER the grass, hugging the pill's top curve -->
+      <img class="hm-dirt" src="assets/loader/17_dirt_strip.png" alt="" aria-hidden="true" />
+
+      <!-- grass strip — overlaps the lower-front edge of the pill -->
+      <img class="hm-grass" src="assets/loader/02_grass_strip.png" alt="" aria-hidden="true" />
+
+      <!-- mower character + spark + smoke (move together, always face right) -->
+      <div class="hm-mower-group">
+        <img class="hm-mower-img" src="assets/loader/03_mower_pull_frame_1.png" alt="" aria-hidden="true" />
+        <img class="hm-smoke" src="assets/loader/08_smoke_puff_1.png" alt="" aria-hidden="true" />
+        <img class="hm-smoke" src="assets/loader/09_smoke_puff_2.png" alt="" aria-hidden="true" />
+        <img class="hm-smoke" src="assets/loader/10_smoke_puff_3.png" alt="" aria-hidden="true" />
+        <img class="hm-spark" src="assets/loader/07_spark_pop.png" alt="" aria-hidden="true" />
+      </div>
+
+      <!-- heat-up loading bar: ramps green -> fire, with a live % -->
+      <div class="hm-bar" aria-hidden="true">
+        <div class="hm-progress">
+          <div class="hm-progress-fill"></div>
+        </div>
+        <div class="hm-pct">0%</div>
+      </div>
+    </div>
+  </div>
+  <script src="loader.js?v=dirt1" defer></script>
 
   <!-- ====================== SCROLL PROGRESS BAR ====================== -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -128,11 +135,9 @@
 
       <nav class="primary-nav" aria-label="Primary">
         <a href="#services">Services</a>
-        <a href="#flow">How It Works</a>
-        <a href="#why">Why H&amp;M</a>
+        <a href="#hm-how-it-works">How It Works</a>
         <a href="#areas">Areas</a>
         <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
       </nav>
 
       <div class="header-cta">
@@ -140,7 +145,7 @@
           <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg>
           202-999-7885
         </a>
-        <a class="btn btn-primary" href="sms:2029997885">Text Photos for a Quote
+        <a class="btn btn-primary" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text Photos for a Quote
           <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg>
         </a>
       </div>
@@ -153,13 +158,11 @@
     <!-- Mobile drawer -->
     <div class="mobile-drawer" id="mobileDrawer" hidden>
       <a href="#services">Services</a>
-      <a href="#flow">How It Works</a>
-      <a href="#why">Why H&amp;M</a>
+      <a href="#hm-how-it-works">How It Works</a>
       <a href="#areas">Areas</a>
       <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
       <div class="drawer-cta">
-        <a class="btn btn-primary block" href="sms:2029997885">Text Photos for a Quote</a>
+        <a class="btn btn-primary block" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text Photos for a Quote</a>
         <a class="btn btn-outline block" href="tel:2029997885">Call 202-999-7885</a>
       </div>
     </div>
@@ -182,7 +185,6 @@
       <h1 class="hero-title" data-split>
         <span class="line"><span class="word">Hard</span> <span class="word">work</span></span>
         <span class="line"><span class="word">Clean</span> <span class="word">results</span></span>
-        <span class="line accent"><span class="word">Proudly</span> <span class="word">serving</span> <span class="word">Northern</span> <span class="word">Virginia.</span></span>
       </h1>
 
       <p class="hero-sub" data-anim="fade-up">
@@ -198,7 +200,7 @@
       </ul>
 
       <div class="hero-cta" data-anim="fade-up">
-        <a class="btn btn-primary btn-lg btn-glow" href="sms:2029997885">
+        <a class="btn btn-primary btn-lg btn-glow" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2z"/></svg>
           Text Photos for a Free Quote
         </a>
@@ -254,6 +256,27 @@
 
   <!-- ====================== SERVICES (brand card grid) ====================== -->
   <section id="services" class="section section-services-v2">
+    <!-- decorative landscape scenery (sketch) -->
+    <div class="svc-scenery" aria-hidden="true">
+      <div class="svc-stencil"></div>
+      <span class="svc-sun"></span>
+      <!-- dark green ground block — the seam the trees & grass sit on -->
+      <div class="svc-ground-block"></div>
+      <!-- watercolor cutouts: left grove (back -> front) -->
+      <img class="lsc lsc-decid-l" src="assets/landscape/trees_deciduous_cluster.png" alt="" />
+      <img class="lsc lsc-ever-l"  src="assets/landscape/trees_evergreen_cluster.png" alt="" />
+      <img class="lsc lsc-bush-l"  src="assets/landscape/bush_cluster.png" alt="" />
+      <!-- watercolor cutouts: right grove (back -> front) -->
+      <img class="lsc lsc-ever-r"  src="assets/landscape/trees_evergreen_cluster.png" alt="" />
+      <img class="lsc lsc-leafy-r" src="assets/landscape/tree_single_leafy.png" alt="" />
+      <img class="lsc lsc-bush-r"  src="assets/landscape/bush_cluster.png" alt="" />
+      <!-- small floating bee detail -->
+      <img class="lsc lsc-bee" src="assets/landscape/bee_yellow_cartoon.png" alt="" />
+      <div class="svc-lawn"></div>
+      <div class="svc-mower-guy">
+        <img class="svc-mower-img" src="assets/mower-guy.png" alt="" />
+      </div>
+    </div>
     <div class="container">
       <header class="section-head" data-reveal>
         <div class="kicker"><span class="kicker-num">01</span><span class="kicker-label">What We Do</span></div>
@@ -270,7 +293,7 @@
           <div class="svc-body">
             <h3>Junk Removal &amp; Hauling</h3>
             <p>Furniture, mattresses, appliances, garage piles. Single items to full loads.</p>
-            <a class="link-arrow" href="sms:2029997885">Text a junk quote
+            <a class="link-arrow" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text a junk quote
               <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg>
             </a>
           </div>
@@ -284,7 +307,7 @@
           <div class="svc-body">
             <h3>Landscaping &amp; Mulch</h3>
             <p>Fresh mulch, clean beds, edging, and curb appeal that lasts.</p>
-            <a class="link-arrow" href="sms:2029997885">Text a yard quote
+            <a class="link-arrow" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text a yard quote
               <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg>
             </a>
           </div>
@@ -298,7 +321,7 @@
           <div class="svc-body">
             <h3>Yard Cleanup &amp; Brush</h3>
             <p>Leaves, branches, overgrowth, and storm cleanup, hauled in one trip.</p>
-            <a class="link-arrow" href="sms:2029997885">Text a cleanup quote
+            <a class="link-arrow" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text a cleanup quote
               <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg>
             </a>
           </div>
@@ -312,7 +335,7 @@
           <div class="svc-body">
             <h3>Power Washing</h3>
             <p>Driveways, sidewalks, decks, fences, and siding, back to like new.</p>
-            <a class="link-arrow" href="sms:2029997885">Text a wash quote
+            <a class="link-arrow" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text a wash quote
               <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg>
             </a>
           </div>
@@ -328,7 +351,7 @@
           <div class="svc-body">
             <h3>Cleanouts</h3>
             <p>Garages, basements, attics, sheds, and move-outs. Labor, truck, and a plan.</p>
-            <a class="link-arrow" href="sms:2029997885">Text a cleanout quote
+            <a class="link-arrow" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text a cleanout quote
               <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg>
             </a>
           </div>
@@ -344,7 +367,7 @@
           <div class="svc-body">
             <h3>Small Hauling Jobs</h3>
             <p>One item, a curbside pile, a quick run to the dump or donation.</p>
-            <a class="link-arrow" href="sms:2029997885">Text a haul quote
+            <a class="link-arrow" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text a haul quote
               <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg>
             </a>
           </div>
@@ -353,154 +376,95 @@
     </div>
   </section>
 
-  <!-- ====================== UNIQUE: PHOTO QUOTE FLOW ====================== -->
-  <section id="flow" class="section section-flow">
-    <div class="container">
-      <header class="section-head" data-reveal>
-        <div class="kicker"><span class="kicker-num">02</span><span class="kicker-label">How It Works</span></div>
-        <h2>Text it. Quote it. <em>Cleared.</em></h2>
-        <p class="section-lede">No in-person estimates. No hourly surprises. See the price before we lift a thing.</p>
+  <!-- ====================== HOW IT WORKS ====================== -->
+  <section id="hm-how-it-works" class="section section-flow hm-how-it-works" aria-labelledby="hm-how-it-works-title">
+    <img class="hiw-bg" src="public/assets/hm-how-it-works/25_bg_dark_green_enhanced_2x.png?v=20260612-bg1" alt="" aria-hidden="true" />
+    <img class="hiw-layer hiw-path" src="public/assets/hm-how-it-works/15_right_paver_path_texture.png" alt="" aria-hidden="true" />
+    <img class="hiw-layer hiw-sun" src="public/assets/hm-how-it-works/16_warm_sunlight_corner_glow.png" alt="" aria-hidden="true" />
+    <img class="hiw-layer hiw-upper-leaves" src="public/assets/hm-how-it-works/14_upper_right_leaf_glow.png" alt="" aria-hidden="true" />
+    <img class="hiw-layer hiw-left-soft" src="public/assets/hm-how-it-works/23_left_foliage_no_phone.png?v=20260612-nophone1" alt="" aria-hidden="true" />
+    <img class="hiw-layer hiw-left-plants" src="public/assets/hm-how-it-works/24_left_leaf_grass_no_phone.png?v=20260612-nophone2" alt="" aria-hidden="true" />
+    <img class="hiw-headline-plate" src="public/assets/hm-how-it-works/02_headline_glass_backplate.png" alt="" aria-hidden="true" />
+
+    <div class="container hiw-container">
+      <header class="hiw-head" data-reveal>
+        <div class="hiw-label" aria-label="02 How It Works">
+          <span>02</span>
+          <strong>HOW IT WORKS</strong>
+        </div>
+        <h2 id="hm-how-it-works-title">Text Photos. Get a Clear Quote. <em>Cleared.</em></h2>
+        <p>Send a few photos. Get one clear by-the-job price before we lift a thing.</p>
       </header>
 
-      <div class="flow-grid">
-        <!-- Phone mockup -->
-        <div class="flow-phone">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="chat-header">
-                <div class="chat-avatar">H&amp;M</div>
-                <div class="chat-name">H&amp;M · 202-999-7885</div>
-              </div>
-
-              <div class="chat-bubble chat-out">
-                Hey, looking to get this stuff out of my garage. Possible this week?
-              </div>
-              <div class="chat-photo-row chat-out">
-                <div class="chat-photo p1" aria-hidden="true"></div>
-                <div class="chat-photo p2" aria-hidden="true"></div>
-                <div class="chat-photo p3" aria-hidden="true"></div>
-              </div>
-
-              <div class="chat-bubble chat-in">
-                Got 'em. Looks like about a half load: old couch, boxes, that wood pile. I'll send a <strong>clear job-based quote</strong> from these photos, dump fees and cleanup included.
-              </div>
-              <div class="chat-bubble chat-in">
-                Could do tomorrow morning between 9 and 11. Want me to text the quote over?
-              </div>
-              <div class="chat-bubble chat-out chat-short">
-                Yes please 🙏
-              </div>
-              <div class="chat-bubble chat-in chat-short">
-                Sending it over now.
-              </div>
-            </div>
+        <div class="flow-grid hiw-grid">
+          <div class="flow-phone hiw-phone-stage" data-reveal>
+            <img class="hiw-phone-art" src="public/assets/hm-how-it-works/26_phone_new_golden_glow.png?v=20260612-gold1" alt="A text conversation with H&amp;M showing a photo quote for junk removal" />
           </div>
-        </div>
 
-        <!-- Steps + price card -->
-        <div class="flow-side">
-          <ol class="flow-steps">
-            <li data-reveal>
-              <span class="flow-num">01</span>
-              <div>
+        <div class="flow-side hiw-process">
+          <ol class="flow-steps hiw-steps">
+            <li class="hiw-step" data-reveal>
+              <span class="flow-num hiw-step-num">01</span>
+              <img class="hiw-step-icon" src="public/assets/hm-how-it-works/07_icon_photo_upload.png" alt="" aria-hidden="true" />
+              <div class="hiw-step-copy">
                 <h3>Send a few photos</h3>
-                <p>Text the pile, the yard, the driveway, whatever needs to go. More angles mean a tighter quote.</p>
+                <p>Text the pile or project area. More angles mean a tighter quote.</p>
               </div>
             </li>
-            <li data-reveal>
-              <span class="flow-num">02</span>
-              <div>
+            <li class="hiw-step" data-reveal>
+              <span class="flow-num hiw-step-num">02</span>
+              <img class="hiw-step-icon" src="public/assets/hm-how-it-works/08_icon_quote_doc.png" alt="" aria-hidden="true" />
+              <div class="hiw-step-copy">
                 <h3>Get a clear quote back</h3>
-                <p>One number, by the job. Written, not a phone guess. Disposal and cleanup baked in.</p>
+                <p>One written by-the-job price. Disposal and clean-up included.</p>
               </div>
             </li>
-            <li data-reveal>
-              <span class="flow-num">03</span>
-              <div>
+            <li class="hiw-step" data-reveal>
+              <span class="flow-num hiw-step-num">03</span>
+              <img class="hiw-step-icon" src="public/assets/hm-how-it-works/09_icon_calendar.png" alt="" aria-hidden="true" />
+              <div class="hiw-step-copy">
                 <h3>Pick a time</h3>
-                <p>Same-day and next-day often available. We work around your schedule.</p>
+                <p>Same-day and next-day slots are often available.</p>
               </div>
             </li>
-            <li data-reveal>
-              <span class="flow-num">04</span>
-              <div>
+            <li class="hiw-step" data-reveal>
+              <span class="flow-num hiw-step-num">04</span>
+              <img class="hiw-step-icon" src="public/assets/hm-how-it-works/10_icon_truck.png" alt="" aria-hidden="true" />
+              <div class="hiw-step-copy">
                 <h3>We haul, clean, leave it better</h3>
-                <p>Loaded, hauled, swept up. You should only notice what's gone.</p>
+                <p>Loaded, hauled, swept up. You only notice what’s gone.</p>
               </div>
             </li>
           </ol>
 
-          <div class="flow-badges" data-reveal>
-            <span class="flow-badge">No hourly surprises</span>
-            <span class="flow-badge">Fast photo quotes</span>
-            <span class="flow-badge">Clear price up front</span>
+          <div class="flow-badges hiw-trust" data-reveal>
+            <span class="flow-badge hiw-trust-chip">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5zm-1 13.5-3.4-3.4 1.4-1.4 2 2 4.2-4.2 1.4 1.4z"/></svg>
+              No surprise fees
+            </span>
+            <span class="flow-badge hiw-trust-chip">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="m13 2-8 12h6l-1 8 9-13h-6z"/></svg>
+              Photo quotes
+            </span>
+            <span class="flow-badge hiw-trust-chip">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 8.5 6h-2.2A7 7 0 1 1 12 5v4l5-5-5-5zm1 8h5v2h-7V7h2z"/></svg>
+              Upfront price
+            </span>
+          </div>
+
+          <div class="hiw-cta-wrap" data-reveal>
+            <a class="hiw-cta" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text Photos for Free Quote →</a>
+            <p>3–5 photos is usually enough.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ====================== WHY US ====================== -->
-  <section id="why" class="section section-why">
-    <div class="container">
-      <header class="section-head" data-reveal>
-        <div class="kicker"><span class="kicker-num">03</span><span class="kicker-label">Why H&amp;M</span></div>
-        <h2>Local. Hardworking. <em>Easy to work with.</em></h2>
-      </header>
-
-      <div class="why-grid">
-        <div class="why-card" data-reveal>
-          <div class="why-icon">
-            <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M17 2 4 18h9l-2 12 13-16h-9z"/></svg>
-          </div>
-          <h3>Fast quotes by text</h3>
-          <p>Text a few photos and we usually reply within the hour with a real, written number.</p>
-        </div>
-        <div class="why-card" data-reveal>
-          <div class="why-icon">
-            <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M16 2L3 8v10c0 7 6 11 13 12 7-1 13-5 13-12V8L16 2zm-1 19-6-6 2-2 4 4 9-9 2 2-11 11z"/></svg>
-          </div>
-          <h3>More affordable than the big guys</h3>
-          <p>Low overhead, no franchise markup. Quoted by the job, not the hour, with no surprise fees.</p>
-        </div>
-        <div class="why-card" data-reveal>
-          <div class="why-icon">
-            <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M6 6h14v14H6zm14 4h5l4 4v6h-9zM10 26a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm15 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
-          </div>
-          <h3>19-year-old owner on every job</h3>
-          <p>You text the owner, you talk to the owner, and the owner shows up with a reliable college crew, every job.</p>
-        </div>
-        <div class="why-card" data-reveal>
-          <div class="why-icon">
-            <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M16 2C9 9 6 14 6 19a10 10 0 0 0 20 0c0-5-3-10-10-17z"/></svg>
-          </div>
-          <h3>Local to Northern Virginia</h3>
-          <p>Based in NoVA, working Fairfax and Loudoun County neighborhoods every week.</p>
-        </div>
-        <div class="why-card" data-reveal>
-          <div class="why-icon">
-            <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M4 8h24v4H4zm0 6h24v4H4zm0 6h16v4H4z"/></svg>
-          </div>
-          <h3>Cleanup included</h3>
-          <p>We sweep up after ourselves. You shouldn't be able to tell we were there, except for what's gone.</p>
-        </div>
-        <div class="why-card" data-reveal>
-          <div class="why-icon">
-            <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M16 4a8 8 0 0 1 8 8c0 6-8 16-8 16S8 18 8 12a8 8 0 0 1 8-8zm0 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
-          </div>
-          <h3>Flexible scheduling</h3>
-          <p>Same-day and next-day pickups when the schedule allows. Evenings and weekends OK.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ====================== SERVICE AREAS ====================== -->
   <section id="areas" class="section section-areas">
     <div class="container">
       <header class="section-head section-head-light" data-reveal>
-        <div class="kicker"><span class="kicker-num">04</span><span class="kicker-label">Service Areas</span></div>
+        <div class="kicker"><span class="kicker-num">03</span><span class="kicker-label">Service Areas</span></div>
         <h2>Proudly serving Northern Virginia.</h2>
         <p>Generally within about 40 minutes of our base. Don't see your town? Text us, odds are we can still help.</p>
       </header>
@@ -515,7 +479,7 @@
       </div>
 
       <div class="areas-cta" data-reveal>
-        <a class="btn btn-primary btn-lg" href="sms:2029997885">Check My Area</a>
+        <a class="btn btn-primary btn-lg" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Check My Area</a>
         <a class="btn btn-light-outline btn-lg" href="tel:2029997885">Call 202-999-7885</a>
       </div>
 
@@ -531,7 +495,7 @@
   <section id="about" class="section section-about">
     <div class="container about-grid">
       <div class="about-copy" data-reveal>
-        <div class="kicker"><span class="kicker-num">05</span><span class="kicker-label">About</span></div>
+        <div class="kicker"><span class="kicker-num">04</span><span class="kicker-label">About</span></div>
         <h2>About <em>H&amp;M.</em></h2>
         <p>
           H&amp;M Junk Removal &amp; Landscaping is a local, owner-operated crew working out of Northern Virginia.
@@ -549,7 +513,7 @@
           <div><strong>Owner</strong><span>on every job</span></div>
         </div>
         <div class="about-cta">
-          <a class="btn btn-primary" href="sms:2029997885">Text Photos for a Free Quote</a>
+          <a class="btn btn-primary" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text Photos for a Free Quote</a>
           <a class="btn btn-outline" href="tel:2029997885">Call 202-999-7885</a>
         </div>
       </div>
@@ -564,89 +528,11 @@
     </div>
   </section>
 
-  <!-- ====================== JOBS WE HANDLE ====================== -->
-  <section id="gallery" class="section section-gallery">
-    <div class="container">
-      <header class="section-head" data-reveal>
-        <div class="kicker"><span class="kicker-num">06</span><span class="kicker-label">Before &amp; After</span></div>
-        <h2>Real jobs around NoVA. <em>Before and after.</em></h2>
-        <p class="section-lede">Our truck, and real work we've done, from junk hauls and cleanouts to mulch and power washing. Text photos of yours and we'll send a quote back.</p>
-      </header>
-
-      <div class="work-grid work-grid-v3">
-        <figure class="work-card work-card-feature">
-          <img src="assets/truck-loaded.jpg" alt="The H&amp;M Tacoma loaded with a junk haul in a Northern Virginia driveway" width="1500" height="938" loading="lazy" />
-          <span class="work-tag work-tag-real">Our truck</span>
-          <figcaption>
-            <strong>Loaded and ready to haul</strong>
-            <span>The H&amp;M Tacoma on a Northern Virginia job</span>
-          </figcaption>
-        </figure>
-
-        <aside class="work-panel work-panel-list" data-reveal>
-          <h3>What we haul</h3>
-          <ul>
-            <li>Furniture, couches &amp; mattresses</li>
-            <li>Appliances &amp; e-waste</li>
-            <li>Garage, shed &amp; basement piles</li>
-            <li>Yard waste, brush &amp; branches</li>
-            <li>Construction &amp; remodel debris</li>
-            <li>Single items to full truck loads</li>
-          </ul>
-        </aside>
-
-        <figure class="work-card work-card-ba" data-reveal>
-          <div class="ba-img">
-            <img src="assets/ba-powerwash.webp" alt="Before and after pressure washing a mossy brick paver walkway back to clean brick" width="1024" height="620" loading="lazy" />
-          </div>
-          <span class="work-tag work-tag-real">Before → After</span>
-          <figcaption>
-            <strong>Paver &amp; walkway power washing</strong>
-            <span>Moss and grime blasted off, back to clean brick</span>
-          </figcaption>
-        </figure>
-
-        <figure class="work-card work-card-ba" data-reveal>
-          <div class="ba-img">
-            <img src="assets/ba-mulch.jpg" alt="Before and after a mulch bed refresh and edging along a backyard fence line" width="1206" height="640" loading="lazy" />
-          </div>
-          <span class="work-tag work-tag-real">Before → After</span>
-          <figcaption>
-            <strong>Mulch &amp; bed cleanup</strong>
-            <span>Cleared, edged, and topped with fresh mulch</span>
-          </figcaption>
-        </figure>
-
-        <figure class="work-card work-card-ba" data-reveal>
-          <div class="ba-img">
-            <img src="assets/ba-cleanout.webp" alt="Before and after a packed shed cleared out to an empty swept floor" width="1400" height="812" loading="lazy" />
-          </div>
-          <span class="work-tag work-tag-real">Before → After</span>
-          <figcaption>
-            <strong>Garage &amp; shed cleanouts</strong>
-            <span>Packed to empty, swept, and hauled away</span>
-          </figcaption>
-        </figure>
-
-        <article class="work-panel work-panel-cta">
-          <div class="work-panel-text">
-            <h3>Have a pile or project like these?</h3>
-            <p>Text a few photos of yours and we'll send back a clear job-based quote, usually within the hour. Local crew, fair pricing, clean results.</p>
-          </div>
-          <div class="work-panel-actions">
-            <a class="btn btn-primary" href="sms:2029997885">Text a Photo for a Quote</a>
-            <span class="work-panel-soon">More real job photos added here as we go.</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ====================== REVIEWS (ready for real reviews) ====================== -->
   <section id="reviews" class="section section-reviews">
     <div class="container">
       <header class="section-head" data-reveal>
-        <div class="kicker"><span class="kicker-num">07</span><span class="kicker-label">Reviews</span></div>
+        <div class="kicker"><span class="kicker-num">05</span><span class="kicker-label">Reviews</span></div>
         <h2>Building reviews one neighbor at a time.</h2>
         <p class="section-lede">We're a young local crew growing by word of mouth. Reviews go up here as neighbors send them in. No fake names, no filler.</p>
       </header>
@@ -657,10 +543,11 @@
             <span class="stars-note">Review invitation, not a rating yet</span>
           </div>
           <h3>Recently used H&amp;M?</h3>
-          <p>Text us a quick line about how the job went and we'll add it right here for future neighbors to see.</p>
+          <p>Leave a quick review where neighbors already look, or text us a line and we’ll add it here.</p>
           <div class="reviews-actions">
-            <a class="btn btn-primary" href="sms:2029997885">Text Us Your Review</a>
-            <a class="btn btn-outline" href="tel:2029997885">Ask for Recent Jobs</a>
+            <a class="btn btn-primary" href="https://www.google.com/search?q=H%26M%20Junk%20Removal%20and%20Landscaping%20Herndon%20VA%20reviews" target="_blank" rel="noopener">Review on Google</a>
+            <a class="btn btn-outline" href="https://nextdoor.com/pages/hm-junk-removal-and-landscaping-herndon-va/" target="_blank" rel="noopener">Recommend on Nextdoor</a>
+            <a class="btn btn-outline" href="sms:+12029997885?&body=H%26M%20did%20a%20great%20job%20with...">Text a Review</a>
           </div>
         </div>
 
@@ -674,54 +561,17 @@
     </div>
   </section>
 
-  <!-- ====================== FAQ ====================== -->
-  <section id="faq" class="section section-faq">
-    <div class="container">
-      <header class="section-head" data-reveal>
-        <div class="kicker"><span class="kicker-num">08</span><span class="kicker-label">FAQ</span></div>
-        <h2>Common questions.</h2>
-      </header>
-
-      <div class="faq-list">
-        <details data-reveal>
-          <summary>How do I get a quote?<span class="plus"></span></summary>
-          <p>Text photos of the junk, yard, or project area to <a href="sms:2029997885">202-999-7885</a>. We send back a real, written quote, usually within the hour.</p>
-        </details>
-        <details data-reveal>
-          <summary>What areas do you serve?<span class="plus"></span></summary>
-          <p>Northern Virginia, generally within about 40 minutes of our base. That includes Herndon, Reston, Vienna, Oakton, Oak Hill, Fairfax, Chantilly, Centreville, Great Falls, McLean, Sterling, Ashburn, and surrounding neighborhoods.</p>
-        </details>
-        <details data-reveal>
-          <summary>How fast can you come out?<span class="plus"></span></summary>
-          <p>Same-day or next-day is often possible depending on the schedule. Text us and we'll let you know the soonest we can get there.</p>
-        </details>
-        <details data-reveal>
-          <summary>How is pricing decided?<span class="plus"></span></summary>
-          <p>By the job, not by the hour. Price depends on load size, weight, stairs, distance, dump fees, and how much cleanup is needed. You see the number before we start.</p>
-        </details>
-        <details data-reveal>
-          <summary>What can't you take?<span class="plus"></span></summary>
-          <p>We handle most household and yard items. For hazardous materials or anything unusual, text a photo first and we'll let you know whether we can haul it.</p>
-        </details>
-        <details data-reveal>
-          <summary>Is there a minimum job size?<span class="plus"></span></summary>
-          <p>No job is too small. Whether it's one mattress or a full garage, send a photo and we'll quote it fairly.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
   <!-- ====================== FINAL CTA ====================== -->
   <section class="final-cta">
     <div class="final-cta-bg" aria-hidden="true">
       <div class="blob blob-final"></div>
     </div>
     <div class="container final-cta-inner" data-reveal>
-      <div class="kicker kicker-light"><span class="kicker-num">09</span><span class="kicker-label">Let's Go</span></div>
+      <div class="kicker kicker-light"><span class="kicker-num">06</span><span class="kicker-label">Let's Go</span></div>
       <h2>Need junk gone or a yard cleaned up?</h2>
       <p>Text us a few photos and we'll send a fast, free quote. Local, affordable, reliable service across Northern Virginia.</p>
       <div class="final-cta-buttons">
-        <a class="btn btn-primary btn-lg btn-glow" href="sms:2029997885">Text Photos for a Free Quote</a>
+        <a class="btn btn-primary btn-lg btn-glow" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text Photos for a Free Quote</a>
         <a class="btn btn-light-outline btn-lg" href="tel:2029997885">Call 202-999-7885</a>
       </div>
       <p class="fine">No job too small · Fast quotes · Fair pricing · Hard work</p>
@@ -751,7 +601,7 @@
         <h4>Contact</h4>
         <ul class="footer-list">
           <li><a href="tel:2029997885">Call: 202-999-7885</a></li>
-          <li><a href="sms:2029997885">Text: 202-999-7885</a></li>
+          <li><a href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text: 202-999-7885</a></li>
           <li><a href="https://hmjunkland.org">hmjunkland.org</a></li>
         </ul>
       </div>
@@ -794,12 +644,12 @@
       <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg>
       Call
     </a>
-    <a href="sms:2029997885" class="mobile-bar-btn mobile-bar-btn-primary">
+    <a href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos." class="mobile-bar-btn mobile-bar-btn-primary">
       <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2z"/></svg>
       Text Photos
     </a>
   </div>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20260611-landscape" defer></script>
 </body>
 </html>

@@ -333,3 +333,69 @@
     }
   }
 })();
+
+/* =========================================================
+   Services section — lawn-mowing scene
+   Man walks left -> right and the grass he passes gets mowed.
+   Loops: grass grows back when he wraps to the left.
+   ========================================================= */
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lawn = document.querySelector('.svc-lawn');
+  var guy  = document.querySelector('.svc-mower-guy');
+  if (!lawn || !guy) return;
+
+  // scatter grass patches across the lane
+  var N = 14, tufts = [];
+  for (var i = 0; i < N; i++) {
+    var img = document.createElement('img');
+    img.src = 'assets/landscape/grass_patch.png';
+    img.alt = '';
+    img.className = 'svc-tuft';
+    var xpct = 3 + i * (94 / (N - 1));
+    img.style.left = xpct + '%';
+    img.style.setProperty('--sc', (0.7 + ((i * 7) % 11) / 18).toFixed(2));
+    lawn.appendChild(img);
+    tufts.push({ el: img, xpct: xpct });
+  }
+
+  function laneW() { return lawn.getBoundingClientRect().width || window.innerWidth; }
+  function guyW()  { return guy.getBoundingClientRect().width || 150; }
+
+  function place(p) {
+    var w = laneW(), gw = guyW();
+    var x = -gw + p * (w + gw);
+    guy.style.transform = 'translateX(' + x + 'px)';
+    var front = x + gw * 0.88;            // the mower deck is the cutting edge
+    for (var k = 0; k < tufts.length; k++) {
+      if (front >= tufts[k].xpct / 100 * w) tufts[k].el.classList.add('cut');
+    }
+  }
+  function regrow() {
+    for (var k = 0; k < tufts.length; k++) tufts[k].el.classList.remove('cut');
+  }
+
+  // verification hook (this preview forces prefers-reduced-motion)
+  window.__mowTick = function (p) {
+    if (p < 0.02) regrow();
+    place(p);
+    return {
+      cut: tufts.filter(function (t) { return t.el.classList.contains('cut'); }).length,
+      total: tufts.length
+    };
+  };
+
+  if (reduce) { place(0.42); return; }   // parked mid-lawn, grass mowed behind him
+
+  var DUR = 13000, t0 = null, prev = 0;
+  function frame(ts) {
+    if (t0 === null) t0 = ts;
+    var p = ((ts - t0) % DUR) / DUR;
+    if (p < prev) regrow();              // wrapped to the left -> lawn grows back
+    prev = p;
+    place(p);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
