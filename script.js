@@ -365,7 +365,9 @@
 
   function place(p) {
     var w = laneW(), gw = guyW();
-    var x = -gw + p * (w + gw);
+    var start = Math.max(18, w * 0.34);
+    var end = Math.max(start + 1, w * 0.72);
+    var x = start + p * (end - start);
     guy.style.transform = 'translateX(' + x + 'px)';
     var front = x + gw * 0.88;            // the mower deck is the cutting edge
     for (var k = 0; k < tufts.length; k++) {
@@ -387,6 +389,8 @@
   };
 
   if (reduce) { place(0.42); return; }   // parked mid-lawn, grass mowed behind him
+
+  place(0.08);
 
   var DUR = 13000, t0 = null, prev = 0;
   function frame(ts) {
