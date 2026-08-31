@@ -350,7 +350,7 @@
   var N = 14, tufts = [];
   for (var i = 0; i < N; i++) {
     var img = document.createElement('img');
-    img.src = 'assets/landscape/grass_patch.png';
+    img.src = 'assets/landscape/grass_patch.webp';
     img.alt = '';
     img.className = 'svc-tuft';
     var xpct = 3 + i * (94 / (N - 1));

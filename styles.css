@@ -1697,7 +1697,7 @@ body { background: var(--bg-cream); color: var(--ink); }
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("assets/botany-stencil.png") repeat;
+  background: url("assets/botany-stencil.webp") repeat;
   background-size: 300px;
   opacity: 0.10;
 }
@@ -3613,7 +3613,7 @@ select:focus-visible {
   background-color: rgba(14, 55, 36, 0.97);
   background-image:
     linear-gradient(100deg, rgba(245, 241, 230, 0.15) 0%, rgba(28, 88, 58, 0.82) 42%, rgba(6, 39, 26, 0.78) 100%),
-    url("public/assets/hm-how-it-works/03_step_card_backplate.png");
+    url("public/assets/hm-how-it-works/03_step_card_backplate.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -3701,7 +3701,7 @@ select:focus-visible {
   background-color: #ff8a19;
   background-image:
     linear-gradient(90deg, rgba(255, 111, 13, 0.45), rgba(255, 183, 54, 0.28)),
-    url("public/assets/hm-how-it-works/05_cta_orange_button_base.png");
+    url("public/assets/hm-how-it-works/05_cta_orange_button_base.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #fff;

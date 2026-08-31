@@ -38,7 +38,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("assets/loader/16_subtle_paper_texture.png");
+  background-image: url("assets/loader/16_subtle_paper_texture.webp");
   background-size: cover;
   background-position: center;
   opacity: 0.12;

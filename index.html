@@ -8,7 +8,6 @@
   <!-- Primary SEO -->
   <title>H&amp;M Junk Removal &amp; Landscaping · Northern Virginia</title>
   <meta name="description" content="Local junk removal, yard cleanup, and hauling across Northern Virginia. Text photos for a free quote and we handle the heavy lifting." />
-  <meta name="keywords" content="junk removal Northern Virginia, landscaping Northern Virginia, junk removal Fairfax County, yard cleanup Northern Virginia, furniture removal, mulch, brush removal, power washing, Herndon, Reston, Vienna, Fairfax, Chantilly, Sterling, Centreville, McLean, Great Falls, Oakton" />
   <link rel="canonical" href="https://hmjunkland.org/" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
@@ -32,14 +31,18 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://hmjunkland.org/#business",
     "name": "H&M Junk Removal & Landscaping",
     "url": "https://hmjunkland.org",
     "telephone": "+1-202-999-7885",
+    "image": "https://hmjunkland.org/assets/hm-truck.jpg",
+    "logo": "https://hmjunkland.org/assets/logo-primary.webp",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
+      "addressLocality": "Herndon",
       "addressRegion": "VA",
-      "addressLocality": "Northern Virginia",
+      "postalCode": "20170",
       "addressCountry": "US"
     },
     "areaServed": [
@@ -47,14 +50,51 @@
       "Oakton, VA","Oak Hill, VA","Fairfax, VA","Chantilly, VA","Centreville, VA",
       "Great Falls, VA","McLean, VA","Sterling, VA","Ashburn, VA"
     ],
+    "sameAs": [
+      "https://nextdoor.com/pages/hm-junk-removal-and-landscaping-herndon-va/"
+    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Junk Removal" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Yard Cleanup" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mulching" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pressure Washing" } }
+      ]
+    },
     "founder": { "@type": "Person", "name": "Miles Dickey" }
   }
   </script>
 
-  <!-- Fonts: Manrope (display), Inter (body), Bebas Neue (numbers/badges) -->
+  <!-- Fonts: Manrope (display), Inter (body), Bebas Neue (numbers/badges)
+
+       Loaded print-then-swap so the stylesheet does NOT block first paint.
+       A Google Fonts <link rel="stylesheet"> is render-blocking: the browser
+       will not paint a single pixel until it has fetched fonts.googleapis.com
+       AND the font files behind it. On a phone on LTE that is most of a second
+       of blank cream. media="print" makes it a low-priority, non-blocking
+       fetch; onload flips it to "all" and the fonts apply. display=swap means
+       text is readable in the fallback face in the meantime.
+
+       The <noscript> copy keeps fonts working with JS disabled. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  </noscript>
 
   <!-- GSAP + ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
@@ -84,27 +124,27 @@
   <div id="hm-loader" role="status" aria-label="Loading H&amp;M Junk Removal &amp; Landscaping">
     <div class="hm-stage">
       <!-- background decoration (very subtle) -->
-      <img class="hm-bg hm-bg-branch" src="assets/loader/14_leafy_branch_line_art.png" alt="" aria-hidden="true" />
-      <img class="hm-bg hm-bg-pines"  src="assets/loader/11_tree_pine_grove_line_art.png" alt="" aria-hidden="true" />
-      <img class="hm-bg hm-bg-bonsai" src="assets/loader/12_tree_bonsai_line_art.png" alt="" aria-hidden="true" />
-      <img class="hm-bg hm-bg-water"  src="assets/loader/13_tree_watercolor.png" alt="" aria-hidden="true" />
+      <img decoding="async" loading="eager" class="hm-bg hm-bg-branch" src="assets/loader/14_leafy_branch_line_art.webp" alt="" aria-hidden="true" width="923" height="816" />
+      <img decoding="async" loading="eager" class="hm-bg hm-bg-pines"  src="assets/loader/11_tree_pine_grove_line_art.webp" alt="" aria-hidden="true" width="1275" height="762" />
+      <img decoding="async" loading="eager" class="hm-bg hm-bg-bonsai" src="assets/loader/12_tree_bonsai_line_art.webp" alt="" aria-hidden="true" width="1031" height="1043" />
+      <img decoding="async" loading="eager" class="hm-bg hm-bg-water"  src="assets/loader/13_tree_watercolor.webp" alt="" aria-hidden="true" width="953" height="858" />
 
       <!-- logo pill (the brand IS the pill) -->
-      <img class="hm-logo" src="assets/loader/01_hm_logo_pill.png" alt="H&amp;M Junk Removal &amp; Landscaping" />
+      <img decoding="async" loading="eager" class="hm-logo" src="assets/loader/01_hm_logo_pill.webp" alt="H&amp;M Junk Removal &amp; Landscaping" width="1590" height="472" />
 
       <!-- dirt strip — sits UNDER the grass, hugging the pill's top curve -->
-      <img class="hm-dirt" src="assets/loader/17_dirt_strip.png" alt="" aria-hidden="true" />
+      <img decoding="async" loading="eager" class="hm-dirt" src="assets/loader/17_dirt_strip.webp" alt="" aria-hidden="true" width="1200" height="150" />
 
       <!-- grass strip — overlaps the lower-front edge of the pill -->
-      <img class="hm-grass" src="assets/loader/02_grass_strip.png" alt="" aria-hidden="true" />
+      <img decoding="async" loading="eager" class="hm-grass" src="assets/loader/02_grass_strip.webp" alt="" aria-hidden="true" width="640" height="155" />
 
       <!-- mower character + spark + smoke (move together, always face right) -->
       <div class="hm-mower-group">
-        <img class="hm-mower-img" src="assets/loader/03_mower_pull_frame_1.png" alt="" aria-hidden="true" />
-        <img class="hm-smoke" src="assets/loader/08_smoke_puff_1.png" alt="" aria-hidden="true" />
-        <img class="hm-smoke" src="assets/loader/09_smoke_puff_2.png" alt="" aria-hidden="true" />
-        <img class="hm-smoke" src="assets/loader/10_smoke_puff_3.png" alt="" aria-hidden="true" />
-        <img class="hm-spark" src="assets/loader/07_spark_pop.png" alt="" aria-hidden="true" />
+        <img decoding="async" loading="eager" class="hm-mower-img" src="assets/loader/03_mower_pull_frame_1.webp" alt="" aria-hidden="true" width="1388" height="993" />
+        <img decoding="async" loading="eager" class="hm-smoke" src="assets/loader/08_smoke_puff_1.webp" alt="" aria-hidden="true" width="792" height="880" />
+        <img decoding="async" loading="eager" class="hm-smoke" src="assets/loader/09_smoke_puff_2.webp" alt="" aria-hidden="true" width="1248" height="752" />
+        <img decoding="async" loading="eager" class="hm-smoke" src="assets/loader/10_smoke_puff_3.webp" alt="" aria-hidden="true" width="1132" height="416" />
+        <img decoding="async" loading="eager" class="hm-spark" src="assets/loader/07_spark_pop.webp" alt="" aria-hidden="true" width="999" height="979" />
       </div>
 
       <!-- heat-up loading bar: ramps green -> fire, with a live % -->
@@ -130,7 +170,7 @@
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a href="#top" class="brand brand-logo-img" aria-label="H&M Junk Removal and Landscaping home">
-        <img src="assets/logo-primary.png" alt="H&M Junk Removal &amp; Landscaping" />
+        <img decoding="async" loading="eager" src="assets/logo-primary.webp" alt="H&M Junk Removal &amp; Landscaping" width="700" height="156" />
       </a>
 
       <nav class="primary-nav" aria-label="Primary">
@@ -171,7 +211,7 @@
   <!-- ====================== HERO ====================== -->
   <section class="hero hero-cover">
     <div class="hero-cover-media" aria-hidden="true">
-      <img src="assets/crew.jpg" alt="" data-parallax="0.05" />
+      <img decoding="async" loading="eager" src="assets/crew.webp" alt="" data-parallax="0.05" width="1448" height="1086" />
       <div class="hero-cover-scrim"></div>
     </div>
 
@@ -192,10 +232,10 @@
       </p>
 
       <ul class="hero-chips" data-anim="fade-up" aria-label="What we handle">
-        <li><img src="assets/icon-junk-c.png" alt="" />Junk Removal</li>
-        <li><img src="assets/icon-yard-c.png" alt="" />Yard Cleanup</li>
-        <li><img src="assets/icon-landscaping-c.png" alt="" />Mulch &amp; Beds</li>
-        <li><img src="assets/icon-power-c.png" alt="" />Power Washing</li>
+        <li><img decoding="async" loading="eager" src="assets/icon-junk-c.webp" alt="" width="90" height="88" />Junk Removal</li>
+        <li><img decoding="async" loading="eager" src="assets/icon-yard-c.webp" alt="" width="102" height="88" />Yard Cleanup</li>
+        <li><img decoding="async" loading="eager" src="assets/icon-landscaping-c.webp" alt="" width="97" height="88" />Mulch &amp; Beds</li>
+        <li><img decoding="async" loading="eager" src="assets/icon-power-c.webp" alt="" width="93" height="88" />Power Washing</li>
         <li class="hero-chip-more">+ Hauling &amp; Cleanouts</li>
       </ul>
 
@@ -218,9 +258,9 @@
       </div>
 
       <figure class="hero-frame" data-anim="fade-up">
-        <img class="hero-frame-logo" src="assets/logo-primary.png" alt="H&amp;M Junk Removal &amp; Landscaping" />
+        <img fetchpriority="high" decoding="async" loading="eager" class="hero-frame-logo" src="assets/logo-primary.webp" alt="H&amp;M Junk Removal &amp; Landscaping" width="700" height="156" />
         <div class="hero-frame-img">
-          <img src="assets/crew.jpg" alt="The H&amp;M Junk Removal &amp; Landscaping crew in front of their Tacoma in Northern Virginia" />
+          <img decoding="async" loading="eager" src="assets/crew.webp" alt="The H&amp;M Junk Removal &amp; Landscaping crew in front of their Tacoma in Northern Virginia" width="1448" height="1086" />
           <figcaption>The H&amp;M crew · Northern Virginia</figcaption>
         </div>
       </figure>
@@ -263,18 +303,18 @@
       <!-- dark green ground block — the seam the trees & grass sit on -->
       <div class="svc-ground-block"></div>
       <!-- watercolor cutouts: left grove (back -> front) -->
-      <img class="lsc lsc-decid-l" src="assets/landscape/trees_deciduous_cluster.png" alt="" />
-      <img class="lsc lsc-ever-l"  src="assets/landscape/trees_evergreen_cluster.png" alt="" />
-      <img class="lsc lsc-bush-l"  src="assets/landscape/bush_cluster.png" alt="" />
+      <img decoding="async" loading="lazy" class="lsc lsc-decid-l" src="assets/landscape/trees_deciduous_cluster.webp" alt="" width="986" height="1168" />
+      <img decoding="async" loading="lazy" class="lsc lsc-ever-l"  src="assets/landscape/trees_evergreen_cluster.webp" alt="" width="833" height="1123" />
+      <img decoding="async" loading="lazy" class="lsc lsc-bush-l"  src="assets/landscape/bush_cluster.webp" alt="" width="1200" height="736" />
       <!-- watercolor cutouts: right grove (back -> front) -->
-      <img class="lsc lsc-ever-r"  src="assets/landscape/trees_evergreen_cluster.png" alt="" />
-      <img class="lsc lsc-leafy-r" src="assets/landscape/tree_single_leafy.png" alt="" />
-      <img class="lsc lsc-bush-r"  src="assets/landscape/bush_cluster.png" alt="" />
+      <img decoding="async" loading="lazy" class="lsc lsc-ever-r"  src="assets/landscape/trees_evergreen_cluster.webp" alt="" width="833" height="1123" />
+      <img decoding="async" loading="lazy" class="lsc lsc-leafy-r" src="assets/landscape/tree_single_leafy.webp" alt="" width="1098" height="1171" />
+      <img decoding="async" loading="lazy" class="lsc lsc-bush-r"  src="assets/landscape/bush_cluster.webp" alt="" width="1200" height="736" />
       <!-- small floating bee detail -->
-      <img class="lsc lsc-bee" src="assets/landscape/bee_yellow_cartoon.png" alt="" />
+      <img decoding="async" loading="lazy" class="lsc lsc-bee" src="assets/landscape/bee_yellow_cartoon.webp" alt="" width="904" height="925" />
       <div class="svc-lawn"></div>
       <div class="svc-mower-guy">
-        <img class="svc-mower-img" src="assets/mower-guy.png" alt="" />
+        <img decoding="async" loading="lazy" class="svc-mower-img" src="assets/mower-guy.webp" alt="" width="620" height="503" />
       </div>
     </div>
     <div class="container">
@@ -287,8 +327,8 @@
       <div class="service-cards">
         <article class="svc-card" data-reveal>
           <div class="svc-photo">
-            <img src="assets/hm-truck.jpg" alt="H&amp;M truck loaded with a junk haul in a driveway" width="1500" height="938" loading="lazy" />
-            <span class="svc-icon"><img src="assets/icon-junk-c.png" alt="" /></span>
+            <img decoding="async" src="assets/hm-truck.jpg" alt="H&amp;M truck loaded with a junk haul in a driveway" width="1500" height="938" loading="lazy" />
+            <span class="svc-icon"><img decoding="async" loading="lazy" src="assets/icon-junk-c.webp" alt="" width="90" height="88" /></span>
           </div>
           <div class="svc-body">
             <h3>Junk Removal &amp; Hauling</h3>
@@ -301,8 +341,8 @@
 
         <article class="svc-card" data-reveal>
           <div class="svc-photo">
-            <img src="assets/svc-mulch.jpg" alt="Fresh mulch and a clean planting bed" width="760" height="410" loading="lazy" />
-            <span class="svc-icon"><img src="assets/icon-landscaping-c.png" alt="" /></span>
+            <img decoding="async" src="assets/svc-mulch.webp" alt="Fresh mulch and a clean planting bed" width="760" height="410" loading="lazy" />
+            <span class="svc-icon"><img decoding="async" loading="lazy" src="assets/icon-landscaping-c.webp" alt="" width="97" height="88" /></span>
           </div>
           <div class="svc-body">
             <h3>Landscaping &amp; Mulch</h3>
@@ -315,8 +355,8 @@
 
         <article class="svc-card" data-reveal>
           <div class="svc-photo">
-            <img src="assets/svc-yard.jpg" alt="A tidy front yard after a cleanup" width="760" height="428" loading="lazy" />
-            <span class="svc-icon"><img src="assets/icon-yard-c.png" alt="" /></span>
+            <img decoding="async" src="assets/svc-yard.jpg" alt="A tidy front yard after a cleanup" width="760" height="428" loading="lazy" />
+            <span class="svc-icon"><img decoding="async" loading="lazy" src="assets/icon-yard-c.webp" alt="" width="102" height="88" /></span>
           </div>
           <div class="svc-body">
             <h3>Yard Cleanup &amp; Brush</h3>
@@ -329,8 +369,8 @@
 
         <article class="svc-card" data-reveal>
           <div class="svc-photo">
-            <img src="assets/svc-power.jpg" alt="A driveway after pressure washing" width="760" height="570" loading="lazy" />
-            <span class="svc-icon"><img src="assets/icon-power-c.png" alt="" /></span>
+            <img decoding="async" src="assets/svc-power.jpg" alt="A driveway after pressure washing" width="760" height="570" loading="lazy" />
+            <span class="svc-icon"><img decoding="async" loading="lazy" src="assets/icon-power-c.webp" alt="" width="93" height="88" /></span>
           </div>
           <div class="svc-body">
             <h3>Power Washing</h3>
@@ -343,7 +383,7 @@
 
         <article class="svc-card" data-reveal>
           <div class="svc-photo">
-            <img src="assets/svc-cleanout.jpg" alt="A cleared-out garage after a cleanout" width="760" height="428" loading="lazy" />
+            <img decoding="async" src="assets/svc-cleanout.webp" alt="A cleared-out garage after a cleanout" width="760" height="428" loading="lazy" />
             <span class="svc-icon svc-icon-mono">
               <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M6 14l10-8 10 8v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm6 14v-8h8v8"/></svg>
             </span>
@@ -359,7 +399,7 @@
 
         <article class="svc-card" data-reveal>
           <div class="svc-photo">
-            <img src="assets/crew.jpg" alt="The H&amp;M crew ready to haul" width="1448" height="1086" loading="lazy" />
+            <img decoding="async" src="assets/crew.webp" alt="The H&amp;M crew ready to haul" width="1448" height="1086" loading="lazy" />
             <span class="svc-icon svc-icon-mono">
               <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M3 10h14v10H3zm14 4h5l5 4v2h-10zM7 24a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm17 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
             </span>
@@ -378,13 +418,13 @@
 
   <!-- ====================== HOW IT WORKS ====================== -->
   <section id="hm-how-it-works" class="section section-flow hm-how-it-works" aria-labelledby="hm-how-it-works-title">
-    <img class="hiw-bg" src="public/assets/hm-how-it-works/25_bg_dark_green_enhanced_2x.png?v=20260612-bg1" alt="" aria-hidden="true" />
-    <img class="hiw-layer hiw-path" src="public/assets/hm-how-it-works/15_right_paver_path_texture.png" alt="" aria-hidden="true" />
-    <img class="hiw-layer hiw-sun" src="public/assets/hm-how-it-works/16_warm_sunlight_corner_glow.png" alt="" aria-hidden="true" />
-    <img class="hiw-layer hiw-upper-leaves" src="public/assets/hm-how-it-works/14_upper_right_leaf_glow.png" alt="" aria-hidden="true" />
-    <img class="hiw-layer hiw-left-soft" src="public/assets/hm-how-it-works/23_left_foliage_no_phone.png?v=20260612-nophone1" alt="" aria-hidden="true" />
-    <img class="hiw-layer hiw-left-plants" src="public/assets/hm-how-it-works/24_left_leaf_grass_no_phone.png?v=20260612-nophone2" alt="" aria-hidden="true" />
-    <img class="hiw-headline-plate" src="public/assets/hm-how-it-works/02_headline_glass_backplate.png" alt="" aria-hidden="true" />
+    <img decoding="async" loading="lazy" class="hiw-bg" src="public/assets/hm-how-it-works/25_bg_dark_green_enhanced_2x.webp?v=20260612-bg1" alt="" aria-hidden="true" width="3654" height="1722" />
+    <img decoding="async" loading="lazy" class="hiw-layer hiw-path" src="public/assets/hm-how-it-works/15_right_paver_path_texture.webp" alt="" aria-hidden="true" width="680" height="430" />
+    <img decoding="async" loading="lazy" class="hiw-layer hiw-sun" src="public/assets/hm-how-it-works/16_warm_sunlight_corner_glow.webp" alt="" aria-hidden="true" width="520" height="360" />
+    <img decoding="async" loading="lazy" class="hiw-layer hiw-upper-leaves" src="public/assets/hm-how-it-works/14_upper_right_leaf_glow.webp" alt="" aria-hidden="true" width="420" height="260" />
+    <img decoding="async" loading="lazy" class="hiw-layer hiw-left-soft" src="public/assets/hm-how-it-works/23_left_foliage_no_phone.webp?v=20260612-nophone1" alt="" aria-hidden="true" width="430" height="671" />
+    <img decoding="async" loading="lazy" class="hiw-layer hiw-left-plants" src="public/assets/hm-how-it-works/24_left_leaf_grass_no_phone.webp?v=20260612-nophone2" alt="" aria-hidden="true" width="430" height="671" />
+    <img decoding="async" loading="lazy" class="hiw-headline-plate" src="public/assets/hm-how-it-works/02_headline_glass_backplate.png" alt="" aria-hidden="true" width="1280" height="170" />
 
     <div class="container hiw-container">
       <header class="hiw-head" data-reveal>
@@ -398,14 +438,14 @@
 
         <div class="flow-grid hiw-grid">
           <div class="flow-phone hiw-phone-stage" data-reveal>
-            <img class="hiw-phone-art" src="public/assets/hm-how-it-works/26_phone_new_golden_glow.png?v=20260612-gold1" alt="A text conversation with H&amp;M showing a photo quote for junk removal" />
+            <img decoding="async" loading="lazy" class="hiw-phone-art" src="public/assets/hm-how-it-works/26_phone_new_golden_glow.webp?v=20260612-gold1" alt="A text conversation with H&amp;M showing a photo quote for junk removal" width="762" height="1048" />
           </div>
 
         <div class="flow-side hiw-process">
           <ol class="flow-steps hiw-steps">
             <li class="hiw-step" data-reveal>
               <span class="flow-num hiw-step-num">01</span>
-              <img class="hiw-step-icon" src="public/assets/hm-how-it-works/07_icon_photo_upload.png" alt="" aria-hidden="true" />
+              <img decoding="async" loading="lazy" class="hiw-step-icon" src="public/assets/hm-how-it-works/07_icon_photo_upload.png" alt="" aria-hidden="true" width="94" height="94" />
               <div class="hiw-step-copy">
                 <h3>Send a few photos</h3>
                 <p>Text the pile or project area. More angles mean a tighter quote.</p>
@@ -413,7 +453,7 @@
             </li>
             <li class="hiw-step" data-reveal>
               <span class="flow-num hiw-step-num">02</span>
-              <img class="hiw-step-icon" src="public/assets/hm-how-it-works/08_icon_quote_doc.png" alt="" aria-hidden="true" />
+              <img decoding="async" loading="lazy" class="hiw-step-icon" src="public/assets/hm-how-it-works/08_icon_quote_doc.png" alt="" aria-hidden="true" width="94" height="94" />
               <div class="hiw-step-copy">
                 <h3>Get a clear quote back</h3>
                 <p>One written by-the-job price. Disposal and clean-up included.</p>
@@ -421,7 +461,7 @@
             </li>
             <li class="hiw-step" data-reveal>
               <span class="flow-num hiw-step-num">03</span>
-              <img class="hiw-step-icon" src="public/assets/hm-how-it-works/09_icon_calendar.png" alt="" aria-hidden="true" />
+              <img decoding="async" loading="lazy" class="hiw-step-icon" src="public/assets/hm-how-it-works/09_icon_calendar.png" alt="" aria-hidden="true" width="94" height="94" />
               <div class="hiw-step-copy">
                 <h3>Pick a time</h3>
                 <p>Same-day and next-day slots are often available.</p>
@@ -429,7 +469,7 @@
             </li>
             <li class="hiw-step" data-reveal>
               <span class="flow-num hiw-step-num">04</span>
-              <img class="hiw-step-icon" src="public/assets/hm-how-it-works/10_icon_truck.png" alt="" aria-hidden="true" />
+              <img decoding="async" loading="lazy" class="hiw-step-icon" src="public/assets/hm-how-it-works/10_icon_truck.png" alt="" aria-hidden="true" width="94" height="94" />
               <div class="hiw-step-copy">
                 <h3>We haul, clean, leave it better</h3>
                 <p>Loaded, hauled, swept up. You only notice what’s gone.</p>
@@ -520,7 +560,7 @@
 
       <div class="about-badge-panel about-crew-panel" data-parallax="0.08" data-reveal>
         <figure class="about-crew">
-          <img src="assets/crew.jpg" alt="The H&amp;M crew in branded shirts standing in front of the truck on a Northern Virginia job" width="1448" height="1086" loading="lazy" />
+          <img decoding="async" src="assets/crew.webp" alt="The H&amp;M crew in branded shirts standing in front of the truck on a Northern Virginia job" width="1448" height="1086" loading="lazy" />
         </figure>
         <p class="about-badge-line">Young local crew. Strong work ethic.</p>
         <div class="about-tag">Local H&amp;M crew · Northern Virginia</div>
@@ -592,7 +632,7 @@
     <div class="container footer-grid">
       <div>
         <a href="#top" class="brand-footer-logo">
-          <img src="assets/logo-primary.png" alt="H&amp;M Junk Removal &amp; Landscaping" />
+          <img decoding="async" loading="lazy" src="assets/logo-primary.webp" alt="H&amp;M Junk Removal &amp; Landscaping" width="700" height="156" />
         </a>
         <p class="muted small">Local, owner-operated junk removal and landscaping in Northern Virginia. Run by Miles Dickey and a small student crew.</p>
       </div>
