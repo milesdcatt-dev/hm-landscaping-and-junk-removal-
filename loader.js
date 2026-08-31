@@ -17,26 +17,26 @@
   var BASE = "assets/loader/";
   var CONFIG = {
     frames: [
-      BASE + "03_mower_pull_frame_1.png", // 0  stance / first pull
-      BASE + "04_mower_pull_frame_2.png", // 1  mid pull
-      BASE + "05_mower_pull_frame_3.png", // 2  hard pull
-      BASE + "06_mower_thumbs_up.png"     // 3  started! thumbs up
+      BASE + "03_mower_pull_frame_1.webp", // 0  stance / first pull
+      BASE + "04_mower_pull_frame_2.webp", // 1  mid pull
+      BASE + "05_mower_pull_frame_3.webp", // 2  hard pull
+      BASE + "06_mower_thumbs_up.webp"     // 3  started! thumbs up
     ],
     audio: BASE + "15_mower_start_rev_sound.wav", // optional, gesture-gated only
     // every image the loader paints — preloaded up front to avoid pop-in
     preload: [
-      BASE + "01_hm_logo_pill.png",
-      BASE + "02_grass_strip.png",
-      BASE + "17_dirt_strip.png",
-      BASE + "07_spark_pop.png",
-      BASE + "08_smoke_puff_1.png",
-      BASE + "09_smoke_puff_2.png",
-      BASE + "10_smoke_puff_3.png",
-      BASE + "11_tree_pine_grove_line_art.png",
-      BASE + "12_tree_bonsai_line_art.png",
-      BASE + "13_tree_watercolor.png",
-      BASE + "14_leafy_branch_line_art.png",
-      BASE + "16_subtle_paper_texture.png"
+      BASE + "01_hm_logo_pill.webp",
+      BASE + "02_grass_strip.webp",
+      BASE + "17_dirt_strip.webp",
+      BASE + "07_spark_pop.webp",
+      BASE + "08_smoke_puff_1.webp",
+      BASE + "09_smoke_puff_2.webp",
+      BASE + "10_smoke_puff_3.webp",
+      BASE + "11_tree_pine_grove_line_art.webp",
+      BASE + "12_tree_bonsai_line_art.webp",
+      BASE + "13_tree_watercolor.webp",
+      BASE + "14_leafy_branch_line_art.webp",
+      BASE + "16_subtle_paper_texture.webp"
     ],
     sessionKey: "hm_loader_shown",
     playAudio: true            // still only plays after a real user gesture
