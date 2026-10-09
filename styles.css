@@ -4324,3 +4324,30 @@ select:focus-visible {
 .reviews-actions .btn:first-child { grid-column: 1 / -1; }
 .reviews-actions .btn { white-space: nowrap; }
 @media (max-width: 380px) { .reviews-actions { grid-template-columns: 1fr; } }
+
+/* phones: show the framed crew photo + logo pill (scaled down) instead of the plain photo */
+@media (max-width: 760px) {
+  .hero-cover-media { display: none; }
+  .hero-frame {
+    display: flex;
+    width: 100%;
+    max-width: 520px;
+    margin: 26px auto 0;
+    padding: 10px;
+    border-radius: 16px;
+  }
+  .hero-frame::after { inset: 8px; border-radius: 8px; }
+  .hero-frame .hero-frame-logo {
+    width: 100%;
+    height: clamp(64px, 19vw, 92px);
+    padding: 10px 22px;
+    margin: 2px 0 10px;
+    border-width: 3px;
+    box-shadow: 0 0 18px 4px rgba(255,255,255,0.4), 0 6px 16px rgba(0,0,0,0.14);
+  }
+  .hero-frame-img img {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%), linear-gradient(to bottom, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%), linear-gradient(to bottom, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+  }
+  .hero-frame figcaption { padding: 22px 12px 9px; font-size: 0.75rem; }
+}
