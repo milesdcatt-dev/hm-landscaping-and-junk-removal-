@@ -1,0 +1,12 @@
+# Internal files that live in the repo but should never be served publicly.
+/README.md                 /404.html  404!
+/tools/*                   /404.html  404!
+/_headers                  /404.html  404!
+/_redirects                /404.html  404!
+/assets/loader/*.py        /404.html  404!
+/public/assets/*/*.md      /404.html  404!
+
+# Common guesses people type for the quote page.
+/contact                   /quote/    301
+/free-quote                /quote/    301
+/estimate                  /quote/    301

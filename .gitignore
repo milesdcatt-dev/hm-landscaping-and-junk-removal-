@@ -11,3 +11,7 @@ _backups/
 # OS junk
 Thumbs.db
 .DS_Store
+
+# Session leftovers that must never be published
+chats/
+preview-redesign/

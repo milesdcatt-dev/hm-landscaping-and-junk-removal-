@@ -1,0 +1,19 @@
+# Netlify response headers (works for Git deploys and drag-and-drop deploys)
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# CSS/JS are always loaded with a ?v= cache-buster, so browsers can keep them a while.
+/*.css
+  Cache-Control: public, max-age=2592000
+/*.js
+  Cache-Control: public, max-age=2592000
+
+# Images keep their names when replaced, so cache for a week, not forever.
+/assets/*
+  Cache-Control: public, max-age=604800
+/public/assets/*
+  Cache-Control: public, max-age=604800
