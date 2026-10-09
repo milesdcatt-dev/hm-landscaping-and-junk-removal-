@@ -151,7 +151,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 
-  <link rel="stylesheet" href="styles.css?v=20261009-rating1" />
+  <link rel="stylesheet" href="styles.css?v=20261009-reviews2" />
   <link rel="stylesheet" href="loader.css?v=20260613-mower-visible" />
 
   <!-- No-JS fallback: reveal animated content and drop the intro curtain -->
@@ -634,35 +634,45 @@
     </div>
   </section>
 
-  <!-- ====================== REVIEWS (ready for real reviews) ====================== -->
-  <section id="reviews" class="section section-reviews">
+  <!-- ====================== REVIEWS (real Google reviews, word for word; same markup as tools/build_pages.py) ====================== -->
+  <section id="reviews" class="section section-reviews rv-section">
     <div class="container">
       <header class="section-head" data-reveal>
         <div class="kicker"><span class="kicker-num">05</span><span class="kicker-label">Reviews</span></div>
-        <h2>Building reviews one neighbor at a time.</h2>
-        <p class="section-lede">We're a young local crew growing by word of mouth. Reviews go up here as neighbors send them in. No fake names, no filler.</p>
+        <h2>What neighbors are saying.</h2>
+        <p class="section-lede"><a class="rv-rating" href="https://maps.google.com/?cid=7233374597949165858" target="_blank" rel="noopener"><span aria-hidden="true">★★★★★</span> 5.0 on Google from 6 reviews</a>. Every review here is copied word for word from Google.</p>
       </header>
-
-      <div class="reviews-layout" data-reveal>
-        <div class="reviews-invite">
-          <div class="stars"><span aria-hidden="true">★★★★★</span>
-            <a class="stars-note" href="https://maps.google.com/?cid=7233374597949165858" target="_blank" rel="noopener">Rated 5.0 on Google</a>
-          </div>
-          <h3>Recently used H&amp;M?</h3>
-          <p>Leave a quick review where neighbors already look, or text us a line and we’ll add it here.</p>
-          <div class="reviews-actions">
-            <a class="btn btn-primary" href="https://maps.google.com/?cid=7233374597949165858" target="_blank" rel="noopener">Review on Google</a>
-            <a class="btn btn-outline" href="https://nextdoor.com/pages/hm-junk-removal-and-landscaping-herndon-va/" target="_blank" rel="noopener">Recommend on Nextdoor</a>
-            <a class="btn btn-outline" href="sms:+12029997885?&body=H%26M%20did%20a%20great%20job%20with...">Text a Review</a>
-          </div>
-        </div>
-
-        <ul class="trust-signals">
-          <li>Local, owner-operated crew</li>
-          <li>Real Northern Virginia phone and truck</li>
-          <li>Job-based quotes, no hourly surprises</li>
-          <li>Cleanup included when possible</li>
-        </ul>
+      <div class="rv-grid">
+        <figure class="rv-card" data-reveal>
+          <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="rv-quote">These gentlemen are polite, hardworking and excellent. My backyard patio was transformed. It had looked like a junkyard, but now it is immaculate.</blockquote>
+          <figcaption class="rv-who"><strong>Liza Paqueo</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
+        </figure>
+        <figure class="rv-card" data-reveal>
+          <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="rv-quote">Hard working and very polite young boys. Very impressed! Will definitely hire them again.</blockquote>
+          <figcaption class="rv-who"><strong>Skerdi Kostreci</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
+        </figure>
+        <figure class="rv-card" data-reveal>
+          <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="rv-quote">Great work and amazing attention to detail it was my pleasure to hire them</blockquote>
+          <figcaption class="rv-who"><strong>Bloxy Clips</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
+        </figure>
+        <figure class="rv-card" data-reveal>
+          <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="rv-quote">Very professional and efficient!</blockquote>
+          <figcaption class="rv-who"><strong>Goopert</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
+        </figure>
+        <figure class="rv-card" data-reveal>
+          <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="rv-quote">definitely calling them back for another job!</blockquote>
+          <figcaption class="rv-who"><strong>TtvCOMA HYPER</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
+        </figure>
+      </div>
+      <div class="rv-actions" data-reveal>
+        <a class="btn btn-primary" href="https://maps.google.com/?cid=7233374597949165858" target="_blank" rel="noopener">Read all reviews on Google</a>
+        <a class="btn btn-outline" href="https://maps.google.com/?cid=7233374597949165858" target="_blank" rel="noopener">Leave us a review</a>
+        <a class="btn btn-outline" href="https://nextdoor.com/pages/hm-junk-removal-and-landscaping-herndon-va/" target="_blank" rel="noopener">Recommend on Nextdoor</a>
       </div>
     </div>
   </section>

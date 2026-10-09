@@ -27,8 +27,8 @@ SITE = "https://hmjunkland.org"
 PHONE_TEL = "2029997885"
 PHONE_DISPLAY = "202-999-7885"
 SMS = "sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos."
-CSS_VERSION = "20261009-rating1"
-JS_VERSION = "20261009-rating1"
+CSS_VERSION = "20261009-reviews2"
+JS_VERSION = "20261009-reviews2"
 TODAY = date.today().isoformat()
 BUSINESS_ID = f"{SITE}/#business"
 
@@ -636,6 +636,54 @@ def related_section(num: str, slugs: list[str]) -> str:
   </section>"""
 
 
+
+# ---------------------------------------------------------------- reviews
+# Copied word for word from the Google Business Profile (Oct 2026). Never edit
+# the text. Ian Lee left 5 stars with no written review, so he is counted in
+# the rating but has no card. Customer words are exempt from the copy rules.
+GOOGLE_URL = "https://maps.google.com/?cid=7233374597949165858"
+GOOGLE_RATING = "5.0"
+GOOGLE_COUNT = 6
+REVIEWS = [
+    ("Liza Paqueo", "These gentlemen are polite, hardworking and excellent. My backyard patio was transformed. It had looked like a junkyard, but now it is immaculate."),
+    ("Skerdi Kostreci", "Hard working and very polite young boys. Very impressed! Will definitely hire them again."),
+    ("Bloxy Clips", "Great work and amazing attention to detail it was my pleasure to hire them"),
+    ("Goopert", "Very professional and efficient!"),
+    ("TtvCOMA HYPER", "definitely calling them back for another job!"),
+]
+G_ICON = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>'
+
+
+def review_cards(items) -> str:
+    return "\n".join(
+        f"""        <figure class="rv-card" data-reveal>
+          <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="rv-quote">{e(text)}</blockquote>
+          <figcaption class="rv-who"><strong>{e(name)}</strong><span>{G_ICON} Google review</span></figcaption>
+        </figure>""" for name, text in items)
+
+
+def reviews_section(num: str, items=None, title: str = "What neighbors are saying.") -> str:
+    items = items or REVIEWS
+    return f"""
+  <section class="section rv-section">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <div class="kicker"><span class="kicker-num">{num}</span><span class="kicker-label">Reviews</span></div>
+        <h2>{e(title)}</h2>
+        <p class="section-lede"><a class="rv-rating" href="{GOOGLE_URL}" target="_blank" rel="noopener"><span aria-hidden="true">★★★★★</span> {GOOGLE_RATING} on Google from {GOOGLE_COUNT} reviews</a>. Every review here is copied word for word from Google.</p>
+      </header>
+      <div class="rv-grid">
+{review_cards(items)}
+      </div>
+      <div class="rv-actions" data-reveal>
+        <a class="btn btn-primary" href="{GOOGLE_URL}" target="_blank" rel="noopener">Read all reviews on Google</a>
+        <a class="btn btn-outline" href="{GOOGLE_URL}" target="_blank" rel="noopener">Leave us a review</a>
+      </div>
+    </div>
+  </section>"""
+
+
 def final_cta(title: str, text: str) -> str:
     return f"""
   <section class="final-cta">
@@ -729,9 +777,10 @@ def service_page(s: dict) -> str:
   </section>
 """
     main += steps_section("03")
-    main += faq_section("04", s["faqs"], f"{s['name']} questions")
-    main += areas_strip("05", s["name"])
-    main += related_section("06", s["related"])
+    main += reviews_section("04", REVIEWS[:3])
+    main += faq_section("05", s["faqs"], f"{s['name']} questions")
+    main += areas_strip("06", s["name"])
+    main += related_section("07", s["related"])
     main += final_cta(f"Ready to get a price on {s['name'].lower()}?",
                       "Text us a few photos and we will send a fast, free quote. Local, honest work across Northern Virginia.")
     return page(head_html=head(title=s["title"], desc=s["desc"], path=path, schema=schema,
@@ -938,7 +987,8 @@ BANNED = re.compile(r"[–—]|\b(premier|elite|industry-leading|world-class|tra
 
 
 def check_copy(name: str, doc: str) -> None:
-    visible = re.sub(r"<script.*?</script>|<style.*?</style>|<[^>]+>", " ", doc, flags=re.S)
+    # customer quotes are shown exactly as written, so they skip the copy rules
+    visible = re.sub(r"<script.*?</script>|<style.*?</style>|<blockquote.*?</blockquote>|<[^>]+>", " ", doc, flags=re.S)
     visible = html.unescape(visible)
     hits = [m.group(0) for m in BANNED.finditer(visible)]
     if hits:

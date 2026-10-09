@@ -4358,3 +4358,56 @@ select:focus-visible {
 /* real Google rating link in the reviews card */
 a.stars-note { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
 a.stars-note:hover { color: var(--orange-dark); }
+
+/* ===== Real Google reviews (homepage + service pages) ===== */
+.rv-section { background: var(--bg-paper); }
+.rv-rating { color: var(--green-700); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.rv-rating span { color: #e0a423; letter-spacing: 1px; text-decoration: none; margin-right: 4px; }
+.rv-rating:hover { color: var(--orange-dark); }
+.rv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--grid-gap);
+}
+.rv-card {
+  position: relative;
+  margin: 0;
+  display: flex; flex-direction: column;
+  background: #fff;
+  border: var(--panel-border);
+  border-radius: var(--radius-lg);
+  padding: var(--card-pad);
+  padding-top: calc(var(--card-pad) + 6px);
+  box-shadow: 0 12px 32px rgba(31,77,51,0.08);
+  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
+}
+.rv-card:hover { transform: translateY(-4px); box-shadow: 0 22px 46px rgba(31,77,51,0.14); }
+.rv-card::before {             /* big soft quote mark */
+  content: "\201C";
+  position: absolute; right: 18px; top: 4px;
+  font-family: Georgia, serif; font-size: 5rem; line-height: 1;
+  color: var(--orange); opacity: 0.18;
+  pointer-events: none;
+}
+.rv-stars { color: #e0a423; font-size: 1.05rem; letter-spacing: 2px; margin-bottom: 10px; }
+.rv-quote {
+  margin: 0 0 18px;
+  flex: 1;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.rv-who { display: flex; flex-direction: column; gap: 4px; padding-top: 14px; border-top: 1px solid rgba(31,77,51,0.10); }
+.rv-who strong { color: var(--green-700); font-family: var(--font-display); }
+.rv-who span { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--slate-500); }
+.rv-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: clamp(28px, 4vw, 40px); }
+@media (min-width: 761px) {
+  .rv-quote { font-size: 17px; }
+  .rv-who strong { font-size: 15px; }
+  .rv-who span { font-size: 13px; }
+}
+@media (max-width: 620px) {
+  .rv-actions .btn { width: 100%; justify-content: center; }
+}
