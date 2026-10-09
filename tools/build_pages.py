@@ -27,8 +27,8 @@ SITE = "https://hmjunkland.org"
 PHONE_TEL = "2029997885"
 PHONE_DISPLAY = "202-999-7885"
 SMS = "sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos."
-CSS_VERSION = "20261008-pages8"
-JS_VERSION = "20261008-pages8"
+CSS_VERSION = "20261008-reviews1"
+JS_VERSION = "20261008-reviews1"
 TODAY = date.today().isoformat()
 BUSINESS_ID = f"{SITE}/#business"
 
