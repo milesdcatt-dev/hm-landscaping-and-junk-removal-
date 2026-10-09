@@ -4351,3 +4351,6 @@ select:focus-visible {
   }
   .hero-frame figcaption { padding: 22px 12px 9px; font-size: 0.75rem; }
 }
+
+/* keyword sub-line inside the homepage H1 */
+.hero-cover .hero-title .accent { -webkit-text-stroke: 0; display: block; max-width: 22ch; }
