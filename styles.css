@@ -4354,3 +4354,7 @@ select:focus-visible {
 
 /* keyword sub-line inside the homepage H1 */
 .hero-cover .hero-title .accent { -webkit-text-stroke: 0; display: block; max-width: 22ch; }
+
+/* real Google rating link in the reviews card */
+a.stars-note { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
+a.stars-note:hover { color: var(--orange-dark); }
