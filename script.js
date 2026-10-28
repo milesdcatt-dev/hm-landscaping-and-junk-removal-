@@ -403,3 +403,116 @@
   }
   requestAnimationFrame(frame);
 })();
+
+/* =========================================================
+   Desktop fallback for Text / Call buttons
+   Computers can't send texts, so on a desktop browser the
+   "Text Photos" buttons go to the quote form instead, and
+   "Call" buttons copy the number. Phones are unchanged.
+   ========================================================= */
+(function () {
+  'use strict';
+
+  var ua = navigator.userAgent || '';
+  var isPhoneOrTablet = /Android|iPhone|iPad|iPod|Mobile|Silk|Kindle/i.test(ua) ||
+    (navigator.maxTouchPoints > 1 && /Macintosh/.test(ua));
+  var finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (isPhoneOrTablet || !finePointer) return;
+
+  var PHONE = '202-999-7885';
+  var form = document.querySelector('form.pg-form');
+  if (form && !form.id) form.id = 'quote-form';
+  var formTarget = form ? '#quote-form' : '/quote/#quote-form';
+
+  // Swap texting words for form words inside a link's text nodes.
+  function relabel(link) {
+    var walker = document.createTreeWalker(link, NodeFilter.SHOW_TEXT, null);
+    var node;
+    while ((node = walker.nextNode())) {
+      var t = node.nodeValue;
+      var n = t
+        .replace(/Text Photos for (a )?Free Quote/g, 'Get a Free Quote')
+        .replace(/Text Photos for a Quote/g, 'Get a Free Quote')
+        .replace(/Text photos now/g, 'Use the quote form')
+        .replace(/Check my area by text/g, 'Check my area')
+        .replace(/Text a (\w+) quote/g, 'Get a $1 quote')
+        .replace(/^(\s*)Text Photos(\s*)$/, '$1Free Quote$2');
+      if (n !== t) node.nodeValue = n;
+    }
+  }
+
+  document.querySelectorAll('a[href^="sms:"]').forEach(function (a) {
+    // Footer "Text: 202-999-7885" lines stay as plain info.
+    if (/\d{3}-\d{3}-\d{4}/.test(a.textContent)) {
+      a.setAttribute('href', formTarget);
+      a.textContent = a.textContent.replace(/^\s*Text:/, 'Quote form:').replace(PHONE, 'send photos online');
+      return;
+    }
+    a.setAttribute('href', formTarget);
+    relabel(a);
+  });
+
+  // Small toast for "number copied".
+  var toast;
+  function showToast(msg) {
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.setAttribute('role', 'status');
+      toast.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%);' +
+        'background:#1F4D33;color:#fff;padding:12px 18px;border-radius:999px;font:600 15px Inter,system-ui,sans-serif;' +
+        'box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:9999;opacity:0;transition:opacity .2s';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function () { toast.style.opacity = '0'; }, 3200);
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (!a) return;
+    e.preventDefault();
+    var msg = 'Call or text us at ' + PHONE;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(PHONE).then(function () {
+        showToast('Number copied: ' + PHONE);
+      }, function () { showToast(msg); });
+    } else {
+      showToast(msg);
+    }
+  });
+})();
+
+/* =========================================================
+   Google Ads lead tracking: phone taps on Call and Text links.
+   Paste each conversion label from Google Ads below to count
+   them as conversions. Until then they log as plain events.
+   ========================================================= */
+(function () {
+  'use strict';
+  var ADS_ID = 'AW-18227080372';
+  var LABELS = {
+    call: '3xxHCNaUl5sdELTZrPND', // "Call clicks" conversion action
+    text: 'VxU7CITsjpsdELTZrPND'  // "Text clicks" conversion action
+  };
+
+  function track(kind) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', kind === 'call' ? 'phone_call_click' : 'text_message_click', {
+      event_category: 'lead',
+      event_label: location.pathname
+    });
+    if (LABELS[kind]) {
+      window.gtag('event', 'conversion', { send_to: ADS_ID + '/' + LABELS[kind] });
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="sms:"]');
+    if (!a) return;
+    // On desktop, Call links only copy the number, so they don't count as a lead.
+    if (e.defaultPrevented) return;
+    track(a.getAttribute('href').indexOf('tel:') === 0 ? 'call' : 'text');
+  });
+})();

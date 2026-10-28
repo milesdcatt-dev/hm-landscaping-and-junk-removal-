@@ -15,3 +15,6 @@ Thumbs.db
 # Session leftovers that must never be published
 chats/
 preview-redesign/
+
+# Clean upload folder for Netlify Drop (rebuilt from the site files)
+_deploy/
