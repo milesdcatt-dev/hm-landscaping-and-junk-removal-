@@ -901,7 +901,7 @@ def quote_page() -> str:
         </div>
         <label>What do you need?<span aria-hidden="true">*</span>
           <select name="service" required>
-            <option value="">Choose a service</option>{svc_opts}<option value="Not sure / more than one">Not sure, or more than one</option>
+            <option value="">Choose a service</option>{svc_opts}<option value="Gutter Cleaning">Gutter Cleaning</option><option value="Moving Help / Heavy Lifting">Moving Help &amp; Heavy Lifting</option><option value="Not sure / more than one">Not sure, or more than one</option>
           </select>
         </label>
         <label>Tell us about it
