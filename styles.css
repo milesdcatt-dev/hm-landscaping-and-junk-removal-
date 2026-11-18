@@ -4411,3 +4411,186 @@ a.stars-note:hover { color: var(--orange-dark); }
 @media (max-width: 620px) {
   .rv-actions .btn { width: 100%; justify-content: center; }
 }
+
+/* ====================================================================
+   HERO QUICK-QUOTE FORM: a raised cream card inside the dark hero panel.
+   Dark text on cream so every word reads easily; orange marks the choice.
+   (posts to the same Netlify "quote" form as /quote/)
+   ==================================================================== */
+.hero-form {
+  --hf-ease: cubic-bezier(.22, 1, .36, 1);          /* soft, creamy settle */
+  --hf-pop: cubic-bezier(.34, 1.56, .64, 1);        /* gentle overshoot */
+  --hf-ink: #13281c;
+  --hf-soft: #4c5f53;
+  --hf-card: #fbf7ee;
+  --hf-line: #e3dccb;
+  width: 100%;
+  max-width: 430px;
+  margin: 6px auto 22px;
+  padding: 20px 18px 18px;
+  text-align: left;
+  display: grid;
+  gap: 16px;
+  background:
+    radial-gradient(120% 60% at 50% 0%, #fffdf8 0%, rgba(255,253,248,0) 70%),
+    var(--hf-card);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 24px 50px rgba(0,0,0,0.38),
+    0 0 0 6px rgba(255,255,255,0.06),
+    0 0 46px rgba(244,122,32,0.16);
+  color: var(--hf-ink);
+}
+.hero-form .hf-head {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display, inherit);
+  font-weight: 800;
+  font-size: 1.22rem;
+  color: var(--green-800);
+  letter-spacing: -0.01em;
+}
+.hero-form .hf-head::after {
+  content: '';
+  display: block;
+  width: 44px; height: 3px; border-radius: 3px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, var(--orange), #ffb066);
+}
+.hero-form .hf-q {
+  border: 0; margin: 0; padding: 0; min-width: 0;
+  animation: hfIn .7s var(--hf-ease) both;
+}
+.hero-form .hf-q:nth-of-type(1) { animation-delay: .10s; }
+.hero-form .hf-q:nth-of-type(2) { animation-delay: .18s; }
+.hero-form .hf-q:nth-of-type(3) { animation-delay: .26s; }
+.hero-form .hf-q:nth-of-type(4) { animation-delay: .34s; }
+.hero-form .hf-submit, .hero-form .hf-alt { animation: hfIn .7s var(--hf-ease) .42s both; }
+@keyframes hfIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.hero-form legend {
+  display: flex; align-items: center; gap: 9px;
+  padding: 0; margin-bottom: 9px;
+  font-size: 0.98rem; font-weight: 800;
+  color: var(--hf-ink);
+}
+.hero-form .hf-num {
+  position: relative;
+  display: inline-grid; place-items: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--green-700); color: #fff;
+  font-size: 0.8rem; font-weight: 800;
+  transition: background .4s var(--hf-ease), transform .45s var(--hf-pop), color .2s;
+}
+/* answered: the number turns into an orange check */
+.hero-form .hf-q.is-done .hf-num { background: var(--orange); color: transparent; transform: scale(1.08); }
+.hero-form .hf-q.is-done .hf-num::after {
+  content: ''; position: absolute; inset: 0;
+  background: #fff;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9.5 16.2 5.8 12.5l-1.4 1.4 5.1 5.1L20 8.5l-1.4-1.4z'/%3E%3C/svg%3E") center / 15px no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9.5 16.2 5.8 12.5l-1.4 1.4 5.1 5.1L20 8.5l-1.4-1.4z'/%3E%3C/svg%3E") center / 15px no-repeat;
+}
+
+.hero-form .hf-opts { display: grid; gap: 8px; }
+.hero-form .hf-opts-2 { grid-template-columns: 1fr 1fr; }
+.hero-form .hf-opts-3 { grid-template-columns: 1fr 1fr 1fr; }
+.hero-form .hf-opts label { position: relative; cursor: pointer; margin: 0; }
+.hero-form .hf-opts input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.hero-form .hf-opts span {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 8px 10px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1.5px solid var(--hf-line);
+  color: var(--hf-ink);
+  font-size: 0.95rem; font-weight: 700; text-align: center; line-height: 1.2;
+  box-shadow: 0 1px 2px rgba(19,40,28,0.06), 0 2px 8px rgba(19,40,28,0.05);
+  transition:
+    background .35s var(--hf-ease), border-color .35s var(--hf-ease),
+    color .25s var(--hf-ease), box-shadow .35s var(--hf-ease), transform .35s var(--hf-ease);
+}
+.hero-form .hf-opts label:hover span {
+  border-color: #f2b183;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(19,40,28,0.10);
+}
+.hero-form .hf-opts label:active span { transform: scale(0.97); transition-duration: .12s; }
+.hero-form .hf-opts input:checked + span {
+  background: linear-gradient(180deg, #ff8c36 0%, var(--orange) 100%);
+  border-color: var(--orange-dark);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(244,122,32,0.38), 0 0 0 4px rgba(244,122,32,0.16);
+  animation: hfPick .5s var(--hf-pop);
+}
+@keyframes hfPick { 0% { transform: scale(.94); } 60% { transform: scale(1.03); } 100% { transform: scale(1); } }
+.hero-form .hf-opts input:focus-visible + span { outline: 3px solid var(--green-700); outline-offset: 2px; }
+
+.hero-form .hf-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.hero-form .hf-fields input[type="text"],
+.hero-form .hf-fields input[type="tel"],
+.hero-form .hf-fields select {
+  width: 100%; min-height: 48px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1.5px solid var(--hf-line);
+  background: #fff;
+  color: var(--hf-ink);
+  font: inherit; font-size: 16px; font-weight: 600;   /* 16px stops iPhone zooming in on tap */
+  transition: border-color .3s var(--hf-ease), box-shadow .3s var(--hf-ease);
+}
+.hero-form .hf-fields ::placeholder { color: #7b8a80; font-weight: 500; }
+.hero-form .hf-fields input:focus,
+.hero-form .hf-fields select:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 4px rgba(244,122,32,0.18);
+}
+.hero-form .hf-photo { position: relative; margin: 0; cursor: pointer; }
+.hero-form .hf-photo input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.hero-form .hf-photo span {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 48px; padding: 8px 10px;
+  border-radius: 14px;
+  border: 1.5px dashed #c9bfa8;
+  color: var(--hf-soft);
+  font-size: 0.88rem; font-weight: 700;
+  transition: border-color .3s var(--hf-ease), background .3s var(--hf-ease);
+}
+.hero-form .hf-photo:hover span { border-color: var(--orange); background: #fff; }
+.hero-form .hf-photo em { font-style: normal; color: inherit; font-family: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hero-form .hf-photo.has-file span { border-style: solid; border-color: var(--orange); color: var(--orange-dark); background: #fff; }
+
+.hero-form .hf-submit {
+  position: relative; overflow: hidden;
+  width: 100%; justify-content: center; margin-top: 2px;
+  min-height: 54px; font-size: 1.05rem;
+  transition: transform .35s var(--hf-ease), box-shadow .35s var(--hf-ease), background .3s;
+}
+.hero-form .hf-submit::after {     /* slow soft sheen across the button */
+  content: ''; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.35), transparent);
+  animation: hfSheen 3.6s var(--hf-ease) 1.2s infinite;
+}
+@keyframes hfSheen { 0% { left: -60%; } 45%, 100% { left: 130%; } }
+.hero-form .hf-submit:hover { transform: translateY(-2px); }
+.hero-form .hf-alt {
+  margin: 0; text-align: center;
+  font-size: 0.9rem; color: var(--hf-soft);
+}
+.hero-form .hf-alt a, .hero-form .hf-alt strong { color: var(--green-800); font-weight: 800; }
+.hero-form .hf-alt a { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (min-width: 901px) {
+  .hero-cover .hero-panel { min-height: 0; }
+  .hero-cover .hero-title { margin-bottom: 18px; }
+}
+@media (max-width: 380px) {
+  .hero-form { padding: 18px 14px 16px; }
+  .hero-form .hf-fields { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-form *, .hero-form *::after { animation: none !important; transition: none !important; }
+}

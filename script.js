@@ -420,9 +420,13 @@
   if (isPhoneOrTablet || !finePointer) return;
 
   var PHONE = '202-999-7885';
-  var form = document.querySelector('form.pg-form');
+  var form = document.querySelector('form.pg-form') || document.querySelector('form.hero-form');
   if (form && !form.id) form.id = 'quote-form';
-  var formTarget = form ? '#quote-form' : '/quote/#quote-form';
+  var formTarget = form ? '#' + form.id : '/quote/#quote-form';
+
+  // Hero form's "Rather text?" line: computers can't text, so offer the phone number only.
+  var heroAlt = document.querySelector('.hero-form .hf-alt');
+  if (heroAlt) heroAlt.innerHTML = 'Rather talk? Call or text <strong>(202) 999-7885</strong>';
 
   // Swap texting words for form words inside a link's text nodes.
   function relabel(link) {
@@ -514,5 +518,39 @@
     // On desktop, Call links only copy the number, so they don't count as a lead.
     if (e.defaultPrevented) return;
     track(a.getAttribute('href').indexOf('tel:') === 0 ? 'call' : 'text');
+  });
+})();
+
+/* =========================================================
+   Hero quick-quote form: fold the tap answers into "details"
+   so every submission reads clearly in the Netlify email.
+   ========================================================= */
+(function () {
+  'use strict';
+  var f = document.querySelector('form.hero-form');
+  if (!f) return;
+  function val(n) { var el = f.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
+  // Mark a question answered so its number turns into a check.
+  f.addEventListener('change', function (e) {
+    var q = e.target.closest && e.target.closest('.hf-q');
+    if (q && e.target.type === 'radio') q.classList.add('is-done');
+  });
+  var photo = f.querySelector('.hf-photo input');
+  if (photo) photo.addEventListener('change', function () {
+    var lab = photo.closest('.hf-photo'), txt = lab.querySelector('.hf-photo-txt');
+    var file = photo.files && photo.files[0];
+    if (file && file.size > 8 * 1024 * 1024) { photo.value = ''; file = null; alert('That photo is over 8 MB. Try a smaller one, or text it to 202-999-7885.'); }
+    lab.classList.toggle('has-file', !!file);
+    txt.textContent = file ? file.name : 'Add a photo (optional)';
+  });
+  f.addEventListener('submit', function () {
+    var parts = [];
+    if (val('job_size')) parts.push('Size: ' + val('job_size'));
+    if (val('timing')) parts.push('When: ' + val('timing'));
+    parts.push('(sent from the homepage quick form)');
+    f.querySelector('input[name="details"]').value = parts.join('. ');
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', { event_category: 'lead', event_label: 'hero_form' });
+    }
   });
 })();
