@@ -268,3 +268,7 @@ GUIDES = [
         "related": ["junk-removal", "furniture-removal", "yard-cleanup"],
     },
 ]
+
+from guides_more import MORE  # noqa: E402
+
+GUIDES += MORE

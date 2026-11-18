@@ -426,7 +426,7 @@ def footer_html(prefix: str = "/") -> str:
         <a href="{prefix}" class="brand-footer-logo">
           <img decoding="async" loading="lazy" src="/assets/logo-primary.webp" alt="H&amp;M Junk Removal &amp; Landscaping" width="700" height="156" />
         </a>
-        <p class="muted small">Local, owner-operated junk removal and landscaping in Northern Virginia. Run by Miles Dickey and a small student crew.</p>
+        <p class="muted small">Local, owner-operated junk removal and landscaping in Northern Virginia. Run by Miles Dickey and a small <a href="/student-run-junk-removal/">student crew</a>.</p>
       </div>
 
       <div>
@@ -983,7 +983,7 @@ def not_found_page() -> str:
 def sitemap() -> str:
     from guides_data import GUIDES
     urls = (["/", "/service-areas/", "/quote/"] + [f"/{s['slug']}/" for s in SERVICES]
-            + ["/guides/"] + [f"/guides/{g['slug']}/" for g in GUIDES])
+            + ["/student-run-junk-removal/", "/guides/"] + [f"/guides/{g['slug']}/" for g in GUIDES])
     rows = "\n".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod></url>" for u in urls)
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1020,6 +1020,8 @@ def main() -> None:
     import sys
     import guides_pages
     bp = sys.modules[__name__]
+    import student_page
+    write("student-run-junk-removal/index.html", student_page.student_page(bp))
     write("guides/index.html", guides_pages.guides_index(bp))
     for g in guides_pages.GUIDES:
         write(f"guides/{g['slug']}/index.html", guides_pages.guide_page(bp, g))
