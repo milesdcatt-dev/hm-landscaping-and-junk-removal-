@@ -28,7 +28,7 @@ PHONE_TEL = "2029997885"
 PHONE_DISPLAY = "202-999-7885"
 SMS = "sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos."
 CSS_VERSION = "20261009-reviews2"
-JS_VERSION = "20261009-reviews2"
+JS_VERSION = "20261013-tracking2"
 TODAY = date.today().isoformat()
 BUSINESS_ID = f"{SITE}/#business"
 
@@ -321,6 +321,14 @@ def head(*, title: str, desc: str, path: str, schema: list[dict], og_image: str 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18227080372"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'AW-18227080372');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#1F4D33" />
@@ -445,6 +453,7 @@ def footer_html(prefix: str = "/") -> str:
           <li>Great Falls · McLean · Sterling</li>
           <li>Centreville · Ashburn · Burke</li>
           <li><a href="/service-areas/">All service areas</a></li>
+          <li><a href="/guides/">Local guides</a></li>
         </ul>
       </div>
     </div>
@@ -972,7 +981,9 @@ def not_found_page() -> str:
 
 # ---------------------------------------------------------------- sitemap
 def sitemap() -> str:
-    urls = ["/", "/service-areas/", "/quote/"] + [f"/{s['slug']}/" for s in SERVICES]
+    from guides_data import GUIDES
+    urls = (["/", "/service-areas/", "/quote/"] + [f"/{s['slug']}/" for s in SERVICES]
+            + ["/guides/"] + [f"/guides/{g['slug']}/" for g in GUIDES])
     rows = "\n".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod></url>" for u in urls)
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1006,6 +1017,12 @@ def main() -> None:
     for s in SERVICES:
         write(f"{s['slug']}/index.html", service_page(s))
     write("service-areas/index.html", areas_page())
+    import sys
+    import guides_pages
+    bp = sys.modules[__name__]
+    write("guides/index.html", guides_pages.guides_index(bp))
+    for g in guides_pages.GUIDES:
+        write(f"guides/{g['slug']}/index.html", guides_pages.guide_page(bp, g))
     write("quote/index.html", quote_page())
     write("thanks/index.html", thanks_page())
     write("404.html", not_found_page())
