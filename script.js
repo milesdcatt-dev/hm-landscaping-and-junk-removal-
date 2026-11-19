@@ -512,6 +512,12 @@
     }
   }
 
+  // Both quote forms (homepage hero and /quote/) land on /thanks/ after a
+  // successful send, so that page load is the "Website quote form" lead.
+  if (/^\/thanks\/?$/.test(location.pathname) && typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', { send_to: ADS_ID + '/8QEpCImRmbsdELTZrPND' });
+  }
+
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="sms:"]');
     if (!a) return;
