@@ -435,6 +435,8 @@ def footer_html(prefix: str = "/") -> str:
           <li><a href="tel:{PHONE_TEL}">Call: {PHONE_DISPLAY}</a></li>
           <li><a href="{SMS}">Text: {PHONE_DISPLAY}</a></li>
           <li><a href="/quote/">Free quote form</a></li>
+          <li><a href="https://maps.google.com/?cid=7233374597949165858" target="_blank" rel="noopener">Google reviews</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61579645078338" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/hmjunkland/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@hm.junk.removal1" target="_blank" rel="noopener">TikTok</a> · <a href="https://nextdoor.com/pages/hm-junk-removal-and-landscaping-herndon-va/" target="_blank" rel="noopener">Nextdoor</a></li>
         </ul>
       </div>
 
