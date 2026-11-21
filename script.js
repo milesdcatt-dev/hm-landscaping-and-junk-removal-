@@ -560,3 +560,22 @@
     }
   });
 })();
+
+/* Timelapse clips: load and play only while on screen (saves data on phones). */
+(function () {
+  var vids = document.querySelectorAll('.tl-video');
+  if (!vids.length) return;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still || !('IntersectionObserver' in window)) {
+    vids.forEach(function (v) { v.controls = true; v.preload = 'metadata'; });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function (err) { if (err && err.name === 'NotAllowedError') v.controls = true; }); }
+      else { v.pause(); }
+    });
+  }, { threshold: 0.35 });
+  vids.forEach(function (v) { io.observe(v); });
+})();
