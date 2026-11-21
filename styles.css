@@ -1568,12 +1568,12 @@ body { background: var(--bg-cream); color: var(--ink); }
 /* Brand logo image in header (replaces SVG mark) */
 .brand-logo-img { gap: 0; }
 .brand-logo-img img {
-  height: 52px;
+  height: 62px;
   width: auto;
   display: block;
 }
 @media (max-width: 720px) {
-  .brand-logo-img img { height: 42px; }
+  .brand-logo-img img { height: 50px; }
 }
 
 .phone-pill { background: rgba(31,77,51,0.06); color: var(--green-900); }
@@ -2230,7 +2230,7 @@ body { background: var(--bg-cream); color: var(--ink); }
   margin-bottom: 14px;
 }
 .brand-footer-logo img {
-  height: 56px;
+  height: 70px;
   width: auto;
   display: block;
   /* logo has a light bg in PNG; sit it on dark with a clean card */
@@ -2959,7 +2959,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   box-sizing: border-box;
   width: 100%;                         /* span the full top bar so the brand pops */
   height: clamp(118px, 9.5vw, 152px);  /* bigger logo banner */
-  padding: 18px 44px;                  /* breathing room inside the pill */
+  padding: 8px 44px;                   /* new taller logo: less padding so it fills the pill */
   margin: 6px 0 18px;                  /* full-width header above the photo */
   object-fit: contain;
   background: #fff;                    /* white pill bubble around the logo */
@@ -3230,7 +3230,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   }
 
   .brand-logo-img img {
-    height: 42px;
+    height: 62px;
   }
 
   .btn {
@@ -3272,7 +3272,7 @@ h1, h2, h3, .hero-title { padding-bottom: 0.02em; }
   .hero-frame .hero-frame-logo {
     width: 95%;                           /* full top-bar banner so the brand pops */
     height: clamp(99px, 7.6vw, 131px);
-    padding: 16px 40px;
+    padding: 6px 40px;
     margin: 6px auto 14px;
     border-width: 3px;
   }
@@ -3897,7 +3897,7 @@ select:focus-visible {
   .site-footer .footer-list li,
   .site-footer .footer-list a { font-size: 15px; }
   .site-footer .footer-bottom { font-size: 13px; }
-  .brand-footer-logo img { height: 62px; }
+  .brand-footer-logo img { height: 74px; }
   .footer-strip-inner { gap: 18px; padding: 18px 24px; }
   .footer-strip-item { font-size: 14px; letter-spacing: 0.06em; }
 }
@@ -4340,7 +4340,7 @@ select:focus-visible {
   .hero-frame .hero-frame-logo {
     width: 100%;
     height: clamp(64px, 19vw, 92px);
-    padding: 10px 22px;
+    padding: 4px 22px;
     margin: 2px 0 10px;
     border-width: 3px;
     box-shadow: 0 0 18px 4px rgba(255,255,255,0.4), 0 6px 16px rgba(0,0,0,0.14);

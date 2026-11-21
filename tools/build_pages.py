@@ -27,7 +27,7 @@ SITE = "https://hmjunkland.org"
 PHONE_TEL = "2029997885"
 PHONE_DISPLAY = "202-999-7885"
 SMS = "sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos."
-CSS_VERSION = "20261009-reviews2"
+CSS_VERSION = "20261121-logo1"
 JS_VERSION = "20261013-tracking2"
 TODAY = date.today().isoformat()
 BUSINESS_ID = f"{SITE}/#business"
@@ -334,7 +334,7 @@ def head(*, title: str, desc: str, path: str, schema: list[dict], og_image: str 
   <meta name="theme-color" content="#1F4D33" />
   <title>{e(title)}</title>
   <meta name="description" content="{e(desc)}" />{robots}{canonical}
-  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" href="/assets/favicon-hm-2026.png" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{e(title)}" />
@@ -373,7 +373,7 @@ def header() -> str:
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a href="/" class="brand brand-logo-img" aria-label="H&amp;M Junk Removal and Landscaping home">
-        <img decoding="async" loading="eager" src="/assets/logo-primary.webp" alt="H&amp;M Junk Removal &amp; Landscaping" width="700" height="156" />
+        <img decoding="async" loading="eager" src="/assets/logo-hm-2026.webp" alt="H&amp;M Junk Removal &amp; Landscaping" width="912" height="300" />
       </a>
 
       <nav class="primary-nav" aria-label="Primary">
@@ -424,7 +424,7 @@ def footer_html(prefix: str = "/") -> str:
     <div class="container footer-grid">
       <div>
         <a href="{prefix}" class="brand-footer-logo">
-          <img decoding="async" loading="lazy" src="/assets/logo-primary.webp" alt="H&amp;M Junk Removal &amp; Landscaping" width="700" height="156" />
+          <img decoding="async" loading="lazy" src="/assets/logo-hm-2026.webp" alt="H&amp;M Junk Removal &amp; Landscaping" width="912" height="300" />
         </a>
         <p class="muted small">Local, owner-operated junk removal and landscaping in Northern Virginia. Run by Miles Dickey and a small <a href="/student-run-junk-removal/">student crew</a>.</p>
       </div>
