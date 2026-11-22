@@ -162,7 +162,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 
-  <link rel="stylesheet" href="styles.css?v=20261121-logo1" />
+  <link rel="stylesheet" href="styles.css?v=20261121-colin5" />
   <link rel="stylesheet" href="loader.css?v=20260613-mower-visible" />
 
   <!-- No-JS fallback: reveal animated content and drop the intro curtain -->
@@ -242,7 +242,7 @@
         <a href="#services">Services</a>
         <a href="#hm-how-it-works">How It Works</a>
         <a href="#areas">Areas</a>
-        <a href="#about">About</a>
+        <a href="/student-run-junk-removal/">About</a>
         <a href="/quote/">Free Quote</a>
       </nav>
 
@@ -256,6 +256,7 @@
         </a>
       </div>
 
+      <a class="hdr-quote" href="#hero-quote">Free quote</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span>
       </button>
@@ -266,7 +267,7 @@
       <a href="#services">Services</a>
       <a href="#hm-how-it-works">How It Works</a>
       <a href="#areas">Areas</a>
-      <a href="#about">About</a>
+      <a href="/student-run-junk-removal/">About</a>
       <a href="/service-areas/">All Service Areas</a>
       <a href="/quote/">Free Quote Form</a>
       <div class="drawer-cta">
@@ -306,52 +307,30 @@
         <input type="hidden" name="email" value="" />
         <p class="pg-hp"><label>Leave this empty: <input name="bot-field" /></label></p>
 
+        <input type="hidden" name="job_size" value="" />
+        <input type="hidden" name="timing" value="" />
+
         <p class="hf-head">Free quote in 30 seconds</p>
 
-        <fieldset class="hf-q">
-          <legend><span class="hf-num">1</span> What do you need?</legend>
-          <div class="hf-opts hf-opts-2">
-            <label><input type="radio" name="service" value="Junk Removal &amp; Hauling" required /><span>Junk removal</span></label>
-            <label><input type="radio" name="service" value="Garage, Basement &amp; Attic Cleanouts" /><span>Cleanout</span></label>
-            <label><input type="radio" name="service" value="Yard Cleanup &amp; Brush Removal" /><span>Yard / leaves</span></label>
-            <label><input type="radio" name="service" value="Mulching &amp; Landscaping" /><span>Mulching</span></label>
-            <label><input type="radio" name="service" value="Power Washing" /><span>Power washing</span></label>
-            <label><input type="radio" name="service" value="Gutter Cleaning" /><span>Gutter cleaning</span></label>
-            <label><input type="radio" name="service" value="Moving Help / Heavy Lifting" /><span>Moving help</span></label>
-            <label><input type="radio" name="service" value="Not sure / more than one" /><span>Not sure</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="hf-q">
-          <legend><span class="hf-num">2</span> How big is it?</legend>
-          <div class="hf-opts hf-opts-2">
-            <label><input type="radio" name="job_size" value="1-2 items" /><span>1 or 2 items</span></label>
-            <label><input type="radio" name="job_size" value="Small pile" /><span>Small pile</span></label>
-            <label><input type="radio" name="job_size" value="Truckload" /><span>Big pile</span></label>
-            <label><input type="radio" name="job_size" value="Whole room / garage / yard" /><span>Whole room or yard</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="hf-q">
-          <legend><span class="hf-num">3</span> When?</legend>
-          <div class="hf-opts hf-opts-3">
-            <label><input type="radio" name="timing" value="ASAP" /><span>ASAP</span></label>
-            <label><input type="radio" name="timing" value="This week" /><span>This week</span></label>
-            <label><input type="radio" name="timing" value="Just want a price" /><span>Just a price</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="hf-q">
-          <legend><span class="hf-num">4</span> Where should we text the price?</legend>
-          <div class="hf-fields">
-            <input type="text" name="name" autocomplete="given-name" placeholder="First name" aria-label="First name" required />
-            <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="Phone number" aria-label="Phone number" required />
-            <select name="town" aria-label="Town" required>
-              <option value="">Your town</option><option value="Herndon">Herndon</option><option value="Reston">Reston</option><option value="Vienna">Vienna</option><option value="Oakton">Oakton</option><option value="Oak Hill">Oak Hill</option><option value="Fairfax">Fairfax</option><option value="Chantilly">Chantilly</option><option value="Centreville">Centreville</option><option value="Great Falls">Great Falls</option><option value="McLean">McLean</option><option value="Burke">Burke</option><option value="Sterling">Sterling</option><option value="Ashburn">Ashburn</option><option value="Other">Somewhere else</option>
+        <div class="hf-fields hf-fields-short">
+          <select name="service" aria-label="What do you need?" class="hf-wide" required>
+            <option value="">What do you need?</option>
+            <option value="Junk Removal &amp; Hauling">Junk removal</option>
+            <option value="Garage, Basement &amp; Attic Cleanouts">Cleanout</option>
+            <option value="Yard Cleanup &amp; Brush Removal">Yard / leaf cleanup</option>
+            <option value="Mulching &amp; Landscaping">Mulching</option>
+            <option value="Power Washing">Power washing</option>
+            <option value="Gutter Cleaning">Gutter cleaning</option>
+            <option value="Moving Help / Heavy Lifting">Moving help</option>
+            <option value="Not sure / more than one">Not sure / a few things</option>
+          </select>
+          <input type="text" name="name" autocomplete="given-name" placeholder="First name" aria-label="First name" required />
+          <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="Phone" aria-label="Phone number" required />
+          <select name="town" aria-label="Town" required>
+              <option value="">Town</option><option value="Herndon">Herndon</option><option value="Reston">Reston</option><option value="Vienna">Vienna</option><option value="Oakton">Oakton</option><option value="Oak Hill">Oak Hill</option><option value="Fairfax">Fairfax</option><option value="Chantilly">Chantilly</option><option value="Centreville">Centreville</option><option value="Great Falls">Great Falls</option><option value="McLean">McLean</option><option value="Burke">Burke</option><option value="Sterling">Sterling</option><option value="Ashburn">Ashburn</option><option value="Other">Somewhere else</option>
             </select>
-            <label class="hf-photo"><input type="file" name="photo" accept="image/*" /><span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4zm3 4.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9z"/></svg> <em class="hf-photo-txt">Add a photo (optional)</em></span></label>
-          </div>
-        </fieldset>
+          <label class="hf-photo"><input type="file" name="photo" accept="image/*" /><span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4zm3 4.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9z"/></svg> <em class="hf-photo-txt">Add a photo</em></span></label>
+        </div>
 
         <button class="btn btn-primary btn-lg btn-glow hf-submit" type="submit">Get my free quote <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg></button>
         <p class="hf-alt">Rather text? <a href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text photos</a> or <a href="tel:2029997885">call (202) 999-7885</a></p>
@@ -669,70 +648,14 @@
       </div>
     </div>
   </section>
-  <!-- ====================== SERVICE AREAS ====================== -->
-  <section id="areas" class="section section-areas">
-    <div class="container">
-      <header class="section-head section-head-light" data-reveal>
-        <div class="kicker"><span class="kicker-num">03</span><span class="kicker-label">Service Areas</span></div>
-        <h2>Proudly serving Northern Virginia.</h2>
-        <p>Generally within about 40 minutes of our base. Don't see your town? Text us, odds are we can still help.</p>
-      </header>
-
-      <div class="areas-row" data-reveal>
-        <ul class="areas-pill-grid">
-          <li>Herndon</li><li>Reston</li><li>Vienna</li><li>Oakton</li>
-          <li>Oak Hill</li><li>Fairfax</li><li>Chantilly</li><li>Great Falls</li>
-          <li>McLean</li><li>Sterling</li><li>Centreville</li><li>Ashburn</li>
-          <li>Burke</li><li>Fairfax County</li><li>Loudoun County</li>
-        </ul>
-      </div>
-
-      <div class="areas-cta" data-reveal>
-        <a class="btn btn-primary btn-lg" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Check My Area</a>
-        <a class="btn btn-light-outline btn-lg" href="/service-areas/">See All Service Areas</a>
-      </div>
-
-      <!-- Skyline silhouette -->
-      <svg class="skyline" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-        <path fill="rgba(255,255,255,0.08)" d="M0 120V70h40V40h30v30h25V20h35v50h30V60h25v60H0z"/>
-        <path fill="rgba(255,255,255,0.12)" d="M180 120V60h30V30h25v30h35V10h25v50h40v60H180z M340 120V70h50V40h30v80H340z M450 120V20l20-10 20 10v100H450z M510 120V60h25V40h25v20h30v60H510z M620 120V70h40V40h30v30h25V20h35v50h30V60h25v60H620zM800 120V50h35V20h25v100H800z M880 120V60h30V30h25v30h35V10h25v50h40v60H880z M1050 120V70h30V40h25v30h25V20h35v50h25V60h25v60H1050z M1240 120V20l18-12 22 12v100H1240z M1300 120V60h30V40h25v20h30v60H1300z"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- ====================== ABOUT ====================== -->
-  <section id="about" class="section section-about">
-    <div class="container about-grid">
-      <div class="about-copy" data-reveal>
-        <div class="kicker"><span class="kicker-num">04</span><span class="kicker-label">About</span></div>
-        <h2>About <em>H&amp;M.</em></h2>
-        <p>
-          H&amp;M Junk Removal &amp; Landscaping is a local, owner-operated crew working out of Northern Virginia.
-          Run by Miles, a 19-year-old local student saving for college, with a small crew of hardworking
-          neighbors. We do real, honest work for fair prices.
-        </p>
-        <p>
-          When you text H&amp;M, you're texting the person who's going to be doing the job. No dispatcher, no
-          callback game, no hourly clock running while we figure things out. Just send a photo, get a price,
-          pick a time, and we'll handle the rest.
-        </p>
-        <div class="about-stats">
-          <div><strong>Local</strong><span>NoVA crew</span></div>
-          <div><strong>Photo</strong><span>quotes by text</span></div>
-          <div><strong>Owner</strong><span>on every job</span></div>
-        </div>
-        <div class="about-cta">
-          <a class="btn btn-primary" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Text Photos for a Free Quote</a>
-          <a class="btn btn-outline" href="tel:2029997885">Call 202-999-7885</a>
-        </div>
-      </div>
-
-      <div class="about-badge-panel about-crew-panel" data-parallax="0.08" data-reveal>
-        <figure class="about-crew">
-          <img decoding="async" src="assets/crew.webp" alt="The H&amp;M crew in branded shirts standing in front of the truck on a Northern Virginia job" width="1448" height="1086" loading="lazy" />
-        </figure>
-        <p class="about-badge-line">Young local crew. Strong work ethic.</p>
-        <div class="about-tag">Local H&amp;M crew · Northern Virginia</div>
+  <!-- ====================== ABOUT (short; full story lives on the student-run page) ====================== -->
+  <section id="about" class="section about-teaser">
+    <div class="container about-teaser-inner" data-reveal>
+      <img decoding="async" loading="lazy" src="assets/crew.webp" alt="The H&amp;M crew in front of the truck" width="1448" height="1086" />
+      <div>
+        <h2>Who you're <em>texting.</em></h2>
+        <p>H&amp;M is run by Miles, a 19 year old local student, with a small crew of neighbors. When you text us, you're texting the guy who shows up and does the job.</p>
+        <a class="btn btn-outline" href="/student-run-junk-removal/">About us</a>
       </div>
     </div>
   </section>
@@ -749,17 +672,17 @@
         <figure class="rv-card" data-reveal>
           <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="rv-quote">These gentlemen are polite, hardworking and excellent. My backyard patio was transformed. It had looked like a junkyard, but now it is immaculate.</blockquote>
-          <figcaption class="rv-who"><strong>Liza Paqueo</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
+          <figcaption class="rv-who"><span class="rv-av" aria-hidden="true">L</span><strong>Liza Paqueo</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
         </figure>
         <figure class="rv-card" data-reveal>
           <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="rv-quote">Hard working and very polite young boys. Very impressed! Will definitely hire them again.</blockquote>
-          <figcaption class="rv-who"><strong>Skerdi Kostreci</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
+          <figcaption class="rv-who"><span class="rv-av" aria-hidden="true">S</span><strong>Skerdi Kostreci</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
         </figure>
         <figure class="rv-card" data-reveal>
           <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="rv-quote">Very professional and efficient!</blockquote>
-          <figcaption class="rv-who"><strong>Goopert</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
+          <figcaption class="rv-who"><span class="rv-av" aria-hidden="true">G</span><strong>Goopert</strong><span><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google review</span></figcaption>
         </figure>
       </div>
       <div class="rv-actions" data-reveal>
@@ -784,6 +707,30 @@
         <a class="btn btn-light-outline btn-lg" href="tel:2029997885">Call 202-999-7885</a>
       </div>
       <p class="fine">No job too small · Fast quotes · Fair pricing · Hard work</p>
+    </div>
+  </section>
+
+  <!-- ====================== SERVICE AREAS ====================== -->
+  <section id="areas" class="section section-areas">
+    <div class="container">
+      <header class="section-head section-head-light" data-reveal>
+        <div class="kicker"><span class="kicker-num">03</span><span class="kicker-label">Service Areas</span></div>
+        <h2>Proudly serving Northern Virginia.</h2>
+        <p>Generally within about 40 minutes of our base. Don't see your town? Text us, odds are we can still help.</p>
+      </header>
+
+      <p class="areas-line">Herndon, Reston, Vienna, Oakton, Fairfax, Chantilly, Centreville, Great Falls, McLean, Sterling, Ashburn, Burke and nearby towns across Fairfax and Loudoun counties.</p>
+
+      <div class="areas-cta" data-reveal>
+        <a class="btn btn-primary btn-lg" href="sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos.">Check My Area</a>
+        <a class="btn btn-light-outline btn-lg" href="/service-areas/">See All Service Areas</a>
+      </div>
+
+      <!-- Skyline silhouette -->
+      <svg class="skyline" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="rgba(255,255,255,0.08)" d="M0 120V70h40V40h30v30h25V20h35v50h30V60h25v60H0z"/>
+        <path fill="rgba(255,255,255,0.12)" d="M180 120V60h30V30h25v30h35V10h25v50h40v60H180z M340 120V70h50V40h30v80H340z M450 120V20l20-10 20 10v100H450z M510 120V60h25V40h25v20h30v60H510z M620 120V70h40V40h30v30h25V20h35v50h30V60h25v60H620zM800 120V50h35V20h25v100H800z M880 120V60h30V30h25v30h35V10h25v50h40v60H880z M1050 120V70h30V40h25v30h25V20h35v50h25V60h25v60H1050z M1240 120V20l18-12 22 12v100H1240z M1300 120V60h30V40h25v20h30v60H1300z"/>
+      </svg>
     </div>
   </section>
 
