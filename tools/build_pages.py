@@ -27,7 +27,7 @@ SITE = "https://hmjunkland.org"
 PHONE_TEL = "2029997885"
 PHONE_DISPLAY = "202-999-7885"
 SMS = "sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos."
-CSS_VERSION = "20261127-sms1"
+CSS_VERSION = "20261127-rv1"
 JS_VERSION = "20261013-tracking2"
 TODAY = date.today().isoformat()
 BUSINESS_ID = f"{SITE}/#business"
@@ -649,13 +649,15 @@ def related_section(num: str, slugs: list[str]) -> str:
 
 
 # ---------------------------------------------------------------- reviews
-# Copied word for word from the Google Business Profile (Oct 2026). Never edit
+# Copied word for word from the Google Business Profile (Oct 2026; Nov 27 2026:
+# 18 reviews, all 5 stars. Current cards per page are set by tools/update_reviews.py,
+# run it after this generator). Never edit
 # the text. Ian Lee left 5 stars with no written review, so he is counted in
 # the rating but has no card. Miles chose to leave out the two gamer-handle
 # reviewers (Bloxy Clips, TtvCOMA HYPER); they still count toward the 6. Customer words are exempt from the copy rules.
 GOOGLE_URL = "https://maps.google.com/?cid=7233374597949165858"
 GOOGLE_RATING = "5.0"
-GOOGLE_COUNT = 6
+GOOGLE_COUNT = 18
 REVIEWS = [
     ("Liza Paqueo", "These gentlemen are polite, hardworking and excellent. My backyard patio was transformed. It had looked like a junkyard, but now it is immaculate."),
     ("Skerdi Kostreci", "Hard working and very polite young boys. Very impressed! Will definitely hire them again."),

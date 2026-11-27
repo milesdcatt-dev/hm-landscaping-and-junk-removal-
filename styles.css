@@ -4402,6 +4402,12 @@ a.stars-note:hover { color: var(--orange-dark); }
 .rv-who { display: flex; flex-direction: column; gap: 4px; padding-top: 14px; border-top: 1px solid rgba(31,77,51,0.10); }
 .rv-who strong { color: var(--green-700); font-family: var(--font-display); }
 .rv-who span { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--slate-500); }
+/* Homepage review wall: masonry columns so long and short reviews pack tight */
+.rv-grid--wall { display: block; columns: 3 290px; column-gap: var(--grid-gap); }
+.rv-grid--wall .rv-card { break-inside: avoid; margin-bottom: var(--grid-gap); }
+@media (max-width: 620px) {
+  .rv-grid--wall .rv-card:nth-child(n+7) { display: none; }   /* phones: first 6, Google button shows the rest */
+}
 .rv-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: clamp(28px, 4vw, 40px); }
 @media (min-width: 761px) {
   .rv-quote { font-size: 17px; }
