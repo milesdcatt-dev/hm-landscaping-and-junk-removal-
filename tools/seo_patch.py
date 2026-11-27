@@ -16,7 +16,8 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://hmjunkland.org"
 PAGES = ["junk-removal", "cleanouts", "furniture-removal", "yard-cleanup", "mulching",
-         "power-washing", "student-run-junk-removal"]
+         "power-washing", "student-run-junk-removal", "hot-tub-removal", "shed-removal",
+         "deck-removal", "construction-debris-removal", "snow-removal"]
 MARK_START = "  <!-- faq-schema -->"
 MARK_END = "  <!-- /faq-schema -->"
 ITEM = re.compile(r'<details class="pg-faq-item"[^>]*>\s*<summary>(.*?)</summary>\s*<p>(.*?)</p>', re.S)
@@ -65,7 +66,8 @@ def page_info(rel: str) -> tuple[str, str]:
 
 
 def write_llms() -> None:
-    services = ["junk-removal", "furniture-removal", "cleanouts", "yard-cleanup", "mulching", "power-washing"]
+    services = ["junk-removal", "furniture-removal", "cleanouts", "yard-cleanup", "mulching", "power-washing",
+                "hot-tub-removal", "shed-removal", "deck-removal", "construction-debris-removal", "snow-removal"]
     guides = sorted(p.parent.name for p in (ROOT / "guides").glob("*/index.html"))
     lines = [
         "# H&M Junk Removal & Landscaping",

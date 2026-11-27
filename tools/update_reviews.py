@@ -28,6 +28,11 @@ PAGES = {
  "mulching/index.html": ["laura","liza","michael"],
  "power-washing/index.html": ["jenny","laura","liza"],
  "student-run-junk-removal/index.html": ["laura","skerdi","patricia"],
+ "hot-tub-removal/index.html": ["carlos","veljko","donna"],
+ "shed-removal/index.html": ["carlos","veljko","donna"],
+ "deck-removal/index.html": ["carlos","veljko","donna"],
+ "construction-debris-removal/index.html": ["carlos","veljko","donna"],
+ "snow-removal/index.html": ["michael","skerdi","donna"],
 }
 G_ICON = None
 def card(name, text):
