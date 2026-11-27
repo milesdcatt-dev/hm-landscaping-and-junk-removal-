@@ -54,7 +54,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  <link rel="stylesheet" href="/styles.css?v=20261121-colin5" />
+  <link rel="stylesheet" href="/styles.css?v=20261127-sms1" />
   <noscript><style>[data-reveal] { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body class="subpage">
@@ -170,8 +170,9 @@
           <label><input type="radio" name="contact_pref" value="Call" /> Call</label>
           <label><input type="radio" name="contact_pref" value="Email" /> Email</label>
         </fieldset>
+        <label class="pg-consent"><input type="checkbox" name="sms_consent" value="yes" /><span>Yes, text me about my quote from H&amp;M Junk Removal &amp; Landscaping. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. See our <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</span></label>
         <button class="btn btn-primary btn-lg btn-glow" type="submit">Send my quote request <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M5 12h12m0 0-5-5m5 5-5 5"/></svg></button>
-        <p class="pg-form-fine">We only use your info to reply about this job. No spam, no selling your number. By sending, you agree to get texts from H&amp;M about your quote. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
+        <p class="pg-form-fine">We only use your info to reply about this job. No spam, no selling your number.</p>
       </form>
 
       <aside class="pg-quote-side" data-reveal>
@@ -254,7 +255,7 @@
     </div>
 
     <div class="container footer-bottom">
-      <span>© <span id="year"></span> H&amp;M Junk Removal &amp; Landscaping</span>
+      <span>© <span id="year"></span> H&amp;M Junk Removal &amp; Landscaping<span class="footer-legal"> · <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms &amp; Conditions</a></span></span>
       <a href="#top" class="back-top">Back to top
         <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 20V6m0 0-6 6m6-6 6 6"/></svg>
       </a>

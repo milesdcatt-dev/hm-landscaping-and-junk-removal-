@@ -4230,7 +4230,7 @@ select:focus-visible {
 .pg-form label { display: grid; gap: 7px; font-weight: 600; color: var(--ink-2); font-size: 0.98rem; }
 .pg-form label > span { color: var(--orange-dark); margin-left: 2px; }
 .pg-form small { font-weight: 500; color: var(--slate-500); }
-.pg-form input:not([type=radio]):not([type=file]),
+.pg-form input:not([type=radio]):not([type=file]):not([type=checkbox]),
 .pg-form select,
 .pg-form textarea {
   width: 100%;
@@ -4582,7 +4582,17 @@ a.stars-note:hover { color: var(--orange-dark); }
 }
 .hero-form .hf-alt a, .hero-form .hf-alt strong { color: var(--green-800); font-weight: 800; }
 .hero-form .hf-alt a { text-decoration: underline; text-underline-offset: 3px; }
-.hero-form .hf-consent { margin: 2px 0 0; text-align: center; font-size: 0.72rem; line-height: 1.35; color: var(--hf-soft); opacity: .85; }
+.hero-form .hf-consent,
+.pg-form .pg-consent { display: flex !important; align-items: flex-start; gap: 9px; margin: 0; text-align: left; font-size: 0.74rem; line-height: 1.4; font-weight: 500; color: var(--hf-soft, #4c5f53); cursor: pointer; }
+form.pg-form label.pg-consent { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 9px; font-size: 0.82rem; font-weight: 500; color: var(--slate-700); }
+.pg-form .pg-consent > span { color: inherit; margin-left: 0; }
+.hero-form .hf-consent input,
+.pg-form .pg-consent input { flex: none; width: 17px; height: 17px; margin: 1px 0 0 !important; accent-color: var(--orange); cursor: pointer; }
+.hero-form .hf-consent a,
+.pg-form .pg-consent a { color: var(--green-800); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.hero-form .hf-consent { animation: hfIn .7s var(--hf-ease) .4s both; }
+.site-footer .footer-legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.site-footer .footer-legal a:hover { color: #fff; }
 
 @media (min-width: 901px) {
   .hero-cover .hero-panel { min-height: 0; }

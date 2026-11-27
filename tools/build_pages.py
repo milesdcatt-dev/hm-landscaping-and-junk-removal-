@@ -27,7 +27,7 @@ SITE = "https://hmjunkland.org"
 PHONE_TEL = "2029997885"
 PHONE_DISPLAY = "202-999-7885"
 SMS = "sms:+12029997885?&body=Hi%20H%26M%2C%20I%27d%20like%20a%20free%20quote.%20I%27ll%20send%20photos."
-CSS_VERSION = "20261121-logo1"
+CSS_VERSION = "20261127-sms1"
 JS_VERSION = "20261013-tracking2"
 TODAY = date.today().isoformat()
 BUSINESS_ID = f"{SITE}/#business"
@@ -461,7 +461,7 @@ def footer_html(prefix: str = "/") -> str:
     </div>
 
     <div class="container footer-bottom">
-      <span>© <span id="year"></span> H&amp;M Junk Removal &amp; Landscaping</span>
+      <span>© <span id="year"></span> H&amp;M Junk Removal &amp; Landscaping<span class="footer-legal"> · <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms &amp; Conditions</a></span></span>
       <a href="#top" class="back-top">Back to top
         {ICON['up']}
       </a>
@@ -927,6 +927,7 @@ def quote_page() -> str:
           <label><input type="radio" name="contact_pref" value="Call" /> Call</label>
           <label><input type="radio" name="contact_pref" value="Email" /> Email</label>
         </fieldset>
+        <label class="pg-consent"><input type="checkbox" name="sms_consent" value="yes" /><span>Yes, text me about my quote from H&amp;M Junk Removal &amp; Landscaping. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. See our <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</span></label>
         <button class="btn btn-primary btn-lg btn-glow" type="submit">Send my quote request {ICON['arrow']}</button>
         <p class="pg-form-fine">We only use your info to reply about this job. No spam, no selling your number.</p>
       </form>
@@ -985,7 +986,8 @@ def not_found_page() -> str:
 def sitemap() -> str:
     from guides_data import GUIDES
     urls = (["/", "/service-areas/", "/quote/"] + [f"/{s['slug']}/" for s in SERVICES]
-            + ["/student-run-junk-removal/", "/guides/"] + [f"/guides/{g['slug']}/" for g in GUIDES])
+            + ["/student-run-junk-removal/", "/guides/"] + [f"/guides/{g['slug']}/" for g in GUIDES]
+            + ["/privacy/", "/terms/"])
     rows = "\n".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod></url>" for u in urls)
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
